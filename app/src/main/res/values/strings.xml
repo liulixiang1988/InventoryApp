@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">铜冠库存管理</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">设置</string>
+    <string name="title_activity_login">登录</string>
+    <string name="login_btn_login">登录</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="title_activity_inv_in">入库</string>
+    <string name="item_code">物料条码</string>
+    <string name="inv_in_add_item_btn">添加成品条码</string>
+    <string name="inv_code">库存编码</string>
+    <string name="btn_save">保存</string>
+    <string name="btn_clear">清空</string>
+    <string name="title_activity_ipconfig">接口配置</string>
+    <string name="api_address">接口地址</string>
+    <string name="company_name">铜陵有色</string>
+    <string name="btn_inv_in">入库</string>
+    <string name="btn_inv_out">出库</string>
+    <string name="btn_inv_split">拆包</string>
+    <string name="title_activity_inv_out">出库</string>
+
+</resources>
