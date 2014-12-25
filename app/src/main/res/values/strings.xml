@@ -22,5 +22,6 @@
     <string name="btn_inv_split">拆包</string>
     <string name="title_activity_inv_out">出库</string>
     <string name="login_error_text">用户名和密码都不能为空</string>
+    <string name="logout">退出</string>
 
 </resources>
