@@ -77,7 +77,6 @@ public class MainActivity extends ActionBarActivity {
 
             Button btnInvIn = (Button) rootView.findViewById(R.id.btnInvIn);
             Button btnInvOut = (Button) rootView.findViewById(R.id.btnInvOut);
-
             btnInvIn.setOnClickListener(this);
             btnInvOut.setOnClickListener(this);
             return rootView;
