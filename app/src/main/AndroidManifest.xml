@@ -35,11 +35,23 @@
         <activity
             android:name="tgit.inventory.ui.IPConfigActivity"
             android:label="@string/title_activity_ipconfig"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
             android:name="tgit.inventory.ui.InvOutActivity"
             android:label="@string/title_activity_inv_out" >
+        </activity>
+        <activity
+            android:name="tgit.inventory.ui.SplitActivity"
+            android:label="@string/title_activity_split" >
+        </activity>
+        <activity
+            android:name="tgit.inventory.ui.ProductsActivity"
+            android:label="@string/title_activity_products"
+            android:parentActivityName="tgit.inventory.ui.SplitActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tgit.inventory.ui.SplitActivity" />
         </activity>
     </application>
 

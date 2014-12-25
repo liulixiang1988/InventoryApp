@@ -8,10 +8,7 @@ import android.util.Log;
 import android.view.*;
 import android.widget.Button;
 import tgit.config.Config;
-import tgit.inventory.ui.IPConfigActivity;
-import tgit.inventory.ui.InvInActivity;
-import tgit.inventory.ui.InvOutActivity;
-import tgit.inventory.ui.LoginActivity;
+import tgit.inventory.ui.*;
 import tgit.session.CurrentUser;
 import tgit.util.UIHelper;
 
@@ -97,8 +94,10 @@ public class MainActivity extends ActionBarActivity {
 
             Button btnInvIn = (Button) rootView.findViewById(R.id.btnInvIn);
             Button btnInvOut = (Button) rootView.findViewById(R.id.btnInvOut);
+            Button btnInvSplit = (Button) rootView.findViewById(R.id.btnInvSplit);
             btnInvIn.setOnClickListener(this);
             btnInvOut.setOnClickListener(this);
+            btnInvSplit.setOnClickListener(this);
             return rootView;
         }
 
@@ -115,6 +114,10 @@ public class MainActivity extends ActionBarActivity {
                     break;
                 case R.id.btnInvOut:
                     i = new Intent(getActivity(), InvOutActivity.class);
+                    startActivity(i);
+                    break;
+                case R.id.btnInvSplit:
+                    i = new Intent(getActivity(), SplitActivity.class);
                     startActivity(i);
                     break;
             }

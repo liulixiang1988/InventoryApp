@@ -45,4 +45,8 @@ public class Config {
     public static String getUserInfo(String userId){
         return USER_INFO+userId;
     }
+
+    public static String getItemsURL(String itemCode){
+        return "product/"+itemCode;
+    }
 }

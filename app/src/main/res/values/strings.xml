@@ -23,5 +23,12 @@
     <string name="title_activity_inv_out">出库</string>
     <string name="login_error_text">用户名和密码都不能为空</string>
     <string name="logout">退出</string>
+    <string name="title_activity_split">拆包</string>
+    <string name="split_item_code">包装条码</string>
+    <string name="btn_ok">确定</string>
+    <string name="btn_search">查找</string>
+    <string name="split_search_alert_msg">包装条码不能为空</string>
+    <string name="title_activity_products">包装列表</string>
+    <string name="empty_product_label">没有对应的记录</string>
 
 </resources>
