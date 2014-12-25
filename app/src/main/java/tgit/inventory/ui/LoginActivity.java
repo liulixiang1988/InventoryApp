@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,12 +16,13 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tgit.config.Config;
+import tgit.handler.UserInfoRequestHandler;
 import tgit.inventory.app.R;
 import tgit.net.RestClient;
 import tgit.util.UIHelper;
 
 public class LoginActivity extends ActionBarActivity implements View.OnClickListener {
-
+    public static final String TAG = LoginActivity.class.getSimpleName();
     private EditText edtUserName, edtPassword;
 
     @Override
@@ -75,16 +77,19 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
                                   JSONObject response) {
                 try {
                     String token = response.getString("token");
-                    System.out.println("返回的令牌：" + token);
+                    Log.v(TAG, "返回的令牌：" + token);
                     RestClient.getClient().addHeader("Authorization", "Token " + token);
                     UIHelper.ToastMessage(LoginActivity.this, "登录成功");
+
+                    RestClient.get(Config.getUserInfo(edtUserName.getText().toString()), null, new UserInfoRequestHandler());
+
                     Intent i = new Intent(LoginActivity.this, InvInActivity.class);
                     int inv_type = LoginActivity.this.getIntent().getIntExtra(Config.INV_TYPE, 0);
                     i.putExtra(Config.INV_TYPE, inv_type);
                     startActivity(i);
                     finish();
                 } catch (JSONException e) {
-                    System.out.println("A发生错误：" + e.toString());
+                    Log.v(TAG, "A发生错误：" + e.toString());
                     UIHelper.ToastMessage(LoginActivity.this, e.toString());
                 }
             }
@@ -93,9 +98,9 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
             public void onFailure(int statusCode, Header[] headers,
                                   Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
-                System.out.println("发生错误3" + throwable.getMessage());
+                Log.v(TAG, "发生错误3" + throwable.getMessage());
                 for (Header header : headers) {
-                    System.out.println(header.getName() + ":" + header.getValue());
+                    Log.v(TAG, header.getName() + ":" + header.getValue());
                 }
                 UIHelper.ToastMessage(LoginActivity.this, throwable.getMessage());
             }
@@ -103,11 +108,11 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
             @Override
             public void onFailure(int statusCode, Header[] headers,
                                   String responseString, Throwable throwable) {
-                System.out.println("发生错误4+status code:" + statusCode);
+                Log.v(TAG, "发生错误4+status code:" + statusCode);
                 for (Header header : headers) {
-                    System.out.println(header.getName() + ":" + header.getValue());
+                    Log.v(TAG, header.getName() + ":" + header.getValue());
                 }
-                System.out.println(responseString);
+                Log.v(TAG, responseString);
                 super.onFailure(statusCode, headers, responseString, throwable);
             }
         });

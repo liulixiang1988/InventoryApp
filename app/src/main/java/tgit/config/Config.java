@@ -17,6 +17,8 @@ public class Config {
     public static final String APP_ID = "liulx.data_center";
     public static final String INV_TYPE = "inv_type";
 
+    public static final String USER_INFO = "/userinfo/";
+
     /**
      * 获取Preference设置
      */
@@ -38,5 +40,9 @@ public class Config {
 
     public static void initializeConfig(Context context){
         BASE_URL = getBaseURL(context);
+    }
+
+    public static String getUserInfo(String userId){
+        return USER_INFO+userId;
     }
 }
