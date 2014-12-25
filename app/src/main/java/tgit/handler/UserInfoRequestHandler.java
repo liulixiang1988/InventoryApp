@@ -22,6 +22,5 @@ public class UserInfoRequestHandler extends JsonHttpResponseHandler {
         Log.v(TAG, resultJson);
         User user = g.fromJson(resultJson, User.class);
         CurrentUser.setCurrentUser(user);
-
     }
 }

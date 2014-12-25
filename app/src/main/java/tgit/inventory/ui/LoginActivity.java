@@ -1,24 +1,30 @@
 package tgit.inventory.ui;
 
+import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tgit.config.Config;
-import tgit.handler.UserInfoRequestHandler;
+import tgit.inventory.app.MainActivity;
 import tgit.inventory.app.R;
+import tgit.model.User;
 import tgit.net.RestClient;
+import tgit.session.CurrentUser;
 import tgit.util.UIHelper;
 
 public class LoginActivity extends ActionBarActivity implements View.OnClickListener {
@@ -29,6 +35,13 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) {
+            actionBar.hide();
+            Log.v(TAG, "隐藏登录界面的状态栏");
+        }else{
+            Log.v(TAG, "Login不存在ActionBar");
+        }
 
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
         edtUserName = (EditText) findViewById(R.id.edtUserName);
@@ -62,14 +75,21 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if (TextUtils.isEmpty(edtUserName.getText())|| TextUtils.isEmpty(edtPassword.getText())){
-            UIHelper.ToastMessage(this, "用户名和密码都不能为空");
+        final String userId = edtUserName.getText().toString().trim();
+        String password = edtPassword.getText().toString().trim();
+        if (userId.isEmpty() || password.isEmpty()){
+            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+            builder.setTitle(R.string.app_name)
+                    .setMessage(R.string.login_error_text)
+                    .setPositiveButton(android.R.string.ok, null);
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
             return;
         }
 
         RequestParams params = new RequestParams();
-        params.put("username", edtUserName.getText().toString());
-        params.put("password", edtPassword.getText().toString());
+        params.put("username", userId);
+        params.put("password", password);
 
         RestClient.post(Config.URL_LOGIN, params, new JsonHttpResponseHandler() {
             @Override
@@ -81,13 +101,16 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
                     RestClient.getClient().addHeader("Authorization", "Token " + token);
                     UIHelper.ToastMessage(LoginActivity.this, "登录成功");
 
-                    RestClient.get(Config.getUserInfo(edtUserName.getText().toString()), null, new UserInfoRequestHandler());
+                    Gson g = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+                    String resultJson = response.getJSONObject("userinfo").toString();
+                    Log.v(TAG, resultJson);
+                    User user = g.fromJson(resultJson, User.class);
+                    CurrentUser.setCurrentUser(user);
 
-                    Intent i = new Intent(LoginActivity.this, InvInActivity.class);
-                    int inv_type = LoginActivity.this.getIntent().getIntExtra(Config.INV_TYPE, 0);
-                    i.putExtra(Config.INV_TYPE, inv_type);
+                    Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(i);
-                    finish();
                 } catch (JSONException e) {
                     Log.v(TAG, "A发生错误：" + e.toString());
                     UIHelper.ToastMessage(LoginActivity.this, e.toString());

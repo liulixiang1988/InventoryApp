@@ -4,17 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.*;
 import android.widget.Button;
 import tgit.config.Config;
 import tgit.inventory.ui.IPConfigActivity;
+import tgit.inventory.ui.InvInActivity;
 import tgit.inventory.ui.InvOutActivity;
 import tgit.inventory.ui.LoginActivity;
+import tgit.session.CurrentUser;
 import tgit.util.UIHelper;
 
 
 public class MainActivity extends ActionBarActivity {
 
+    public static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +32,25 @@ public class MainActivity extends ActionBarActivity {
 
         Config.initializeConfig(this);
 
-
-
-        if(Config.getBaseURL(this).isEmpty()){
+        if (Config.getBaseURL(this).isEmpty()) {
             UIHelper.ToastMessage(this, "IP地址没有配置");
             Intent i = new Intent(this, IPConfigActivity.class);
             startActivity(i);
         }
+
+        if(CurrentUser.isLogin()){
+            Log.v(TAG, CurrentUser.getUserId()+" 登录");
+        }
+        else{
+            navigateToLoginScreen();
+        }
+    }
+
+    private void navigateToLoginScreen() {
+        Intent i = new Intent(this, LoginActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
     }
 
 
@@ -86,10 +102,10 @@ public class MainActivity extends ActionBarActivity {
         public void onClick(View v) {
             int inv_type;
             Intent i;
-            switch(v.getId()){
+            switch (v.getId()) {
                 case R.id.btnInvIn:
                     inv_type = 0;
-                    i = new Intent(getActivity(), LoginActivity.class);
+                    i = new Intent(getActivity(), InvInActivity.class);
                     i.putExtra(Config.INV_TYPE, inv_type);
                     startActivity(i);
                     break;
