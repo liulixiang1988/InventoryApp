@@ -33,14 +33,19 @@ public class MainActivity extends ActionBarActivity {
             UIHelper.toastMessage(this, "IP地址没有配置");
             Intent i = new Intent(this, IPConfigActivity.class);
             startActivity(i);
+            return;
         }
-
         if(CurrentUser.isLogin()){
             Log.v(TAG, CurrentUser.getUserId()+" 登录");
         }
         else{
             navigateToLoginScreen();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     private void navigateToLoginScreen() {

@@ -70,7 +70,7 @@ public class ProductsActivity extends ActionBarActivity {
      */
     public static class ProductListFragment extends ListFragment {
         public static final String TAG = ProductListFragment.class.getSimpleName();
-        private List<Product> productList = new ArrayList<Product>();
+        private List<Product> mProducts = new ArrayList<Product>();
         private String mItemCode;
         public static final String KEY_PRODUCT = "KEY_PRODUCT";
         public static final String KEY_INLOCATOR = "KEY_INLOCATOR";
@@ -115,7 +115,7 @@ public class ProductsActivity extends ActionBarActivity {
         @Override
         public void onListItemClick(ListView l, View v, int position, long id) {
             super.onListItemClick(l, v, position, id);
-            String itemId = this.productList.get(position).getId();
+            String itemId = this.mProducts.get(position).getId();
             Intent i = new Intent(getActivity(), SplitProductActivity.class);
             i.putExtra(Constants.ITEM_ID, itemId);
             startActivity(i);
@@ -124,6 +124,7 @@ public class ProductsActivity extends ActionBarActivity {
         private void loadData(String itemCode){
             final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "数据加载",
                     "正在加载数据，请稍后", true);
+            mProducts.clear();
             RestClient.get(Config.getItemsURL(itemCode), null, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -144,14 +145,14 @@ public class ProductsActivity extends ActionBarActivity {
                             Log.v(TAG, productString);
 
                             Product product = g.fromJson(productString, Product.class);
-                            productList.add(product);
+                            mProducts.add(product);
 
                             HashMap<String, String> productInfo = new HashMap<String, String>();
                             productInfo.put(KEY_PRODUCT, product.getProductName() + "-" + product.getProductNo());
                             productInfo.put(KEY_INLOCATOR, product.getInLocator());
                             products.add(productInfo);
                         }
-                        Log.v(TAG, productList.toString());
+                        Log.v(TAG, mProducts.toString());
                         String[] keys = { KEY_INLOCATOR, KEY_PRODUCT };
                         int[] ids = { android.R.id.text1, android.R.id.text2 };
                         SimpleAdapter adapter = new SimpleAdapter(

@@ -1,7 +1,8 @@
 package tgit.inventory.ui;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -9,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import org.apache.http.Header;
@@ -29,7 +29,6 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
 
     private EditText edtItemCode, edtInvCode;
     private TextView txtItemCodes;
-    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +54,6 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
                 txtItemCodes.setText("");
             }
         });
-
-        progressBar = (ProgressBar) findViewById(R.id.progressBar1);
-        progressBar.setVisibility(View.INVISIBLE);
     }
 
 
@@ -113,7 +109,7 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
         }
         JSONObject jsonParams = new JSONObject();
         try {
-            progressBar.setVisibility(View.VISIBLE);
+            final ProgressDialog progressDialog = ProgressDialog.show(this, "入库", "正在保存，请稍后", true);
             jsonParams.put("items_code", getItemsCode());
             jsonParams.put("inventory_code", getInvCode());
             Log.v(TAG, jsonParams.toString());
@@ -122,7 +118,7 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
                 @Override
                 public void onSuccess(int statusCode, Header[] headers,
                                       JSONObject response) {
-                    progressBar.setVisibility(View.INVISIBLE);
+                    progressDialog.dismiss();
                     try {
                         String msg = response.getString("msg");
                         Log.v(TAG, "返回的消息：" + msg);
@@ -140,7 +136,7 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
                 @Override
                 public void onFailure(int statusCode, Header[] headers,
                                       Throwable throwable, JSONObject errorResponse) {
-                    progressBar.setVisibility(View.INVISIBLE);
+                    progressDialog.dismiss();
                     Log.e(TAG, "发生错误3 Statuscode:" + statusCode + " ");
                     UIHelper.toastMessage(InvInActivity.this, "发生错误3 状态：" + statusCode);
                 }
@@ -148,7 +144,7 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
                 @Override
                 public void onFailure(int statusCode, Header[] headers,
                                       String responseString, Throwable throwable) {
-                    progressBar.setVisibility(View.INVISIBLE);
+                    progressDialog.dismiss();
                     Log.e(TAG, "发生错误4+status code:" + statusCode);
                     for (Header header : headers) {
                         Log.e(TAG, header.getName() + ":" + header.getValue());

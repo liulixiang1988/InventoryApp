@@ -88,10 +88,16 @@ public class SplitProductActivity extends ActionBarActivity {
 
             initializeControl(rootView);
 
-            String itemId = getActivity().getIntent().getStringExtra(Constants.ITEM_ID);
-            getProduct(itemId);
-
             return rootView;
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            Log.v(TAG, "onResume");
+            String itemId = getActivity().getIntent().getStringExtra(Constants.ITEM_ID);
+            Log.v(TAG, "item id:"+itemId);
+            getProduct(itemId);
         }
 
         private void initializeControl(View v){
@@ -220,8 +226,8 @@ public class SplitProductActivity extends ActionBarActivity {
                                         msg);
                             }else{
                                 UIHelper.toastMessage(getActivity(), msg);
+                                getActivity().finish();
                             }
-                            getActivity().finish();
                         } catch (JSONException e) {
                             UIHelper.alert(getActivity(), R.string.title_activity_split_product,
                                     "返回数据有误:"+e.getMessage());

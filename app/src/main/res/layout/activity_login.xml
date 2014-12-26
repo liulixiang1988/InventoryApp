@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/edtUserName"
         android:hint="@string/username"
+        android:singleLine="true"
         android:layout_below="@+id/imageView2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
