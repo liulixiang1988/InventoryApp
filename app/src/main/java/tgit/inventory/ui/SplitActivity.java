@@ -81,6 +81,7 @@ public class SplitActivity extends ActionBarActivity implements View.OnClickList
 
     private void onClearBtnClicked() {
         edtItemCode.setText("");
+        edtItemCode.requestFocus();
     }
 
     public void onSplitBtnClicked(){
