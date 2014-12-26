@@ -1,5 +1,6 @@
 package tgit.inventory.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v4.app.ListFragment;
 import android.support.v7.app.ActionBarActivity;
@@ -121,10 +122,14 @@ public class ProductsActivity extends ActionBarActivity {
         }
 
         private void loadData(String itemCode){
+            final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "数据加载",
+                    "正在加载数据，请稍后", true);
             RestClient.get(Config.getItemsURL(itemCode), null, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                     super.onSuccess(statusCode, headers, response);
+
+                    progressDialog.dismiss();
 
                     try {
                         int length = response.length();

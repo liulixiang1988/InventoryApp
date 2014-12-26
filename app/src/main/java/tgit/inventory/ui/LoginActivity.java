@@ -1,6 +1,7 @@
 package tgit.inventory.ui;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -84,7 +85,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
             alertDialog.show();
             return;
         }
-
+        final ProgressDialog progressDialog = ProgressDialog.show(this, "登录", "正在登录，请稍后", true);
         RequestParams params = new RequestParams();
         params.put("username", userId);
         params.put("password", password);
@@ -93,6 +94,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
             @Override
             public void onSuccess(int statusCode, Header[] headers,
                                   JSONObject response) {
+                progressDialog.dismiss();
                 try {
                     String token = response.getString("token");
                     Log.v(TAG, "返回的令牌：" + token);
@@ -119,6 +121,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
             public void onFailure(int statusCode, Header[] headers,
                                   Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+                progressDialog.dismiss();
                 Log.v(TAG, "发生错误3" + throwable.getMessage());
                 for (Header header : headers) {
                     Log.v(TAG, header.getName() + ":" + header.getValue());
@@ -129,6 +132,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
             @Override
             public void onFailure(int statusCode, Header[] headers,
                                   String responseString, Throwable throwable) {
+                progressDialog.dismiss();
                 Log.v(TAG, "发生错误4+status code:" + statusCode);
                 for (Header header : headers) {
                     Log.v(TAG, header.getName() + ":" + header.getValue());

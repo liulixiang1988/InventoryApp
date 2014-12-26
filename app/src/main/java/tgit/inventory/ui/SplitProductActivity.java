@@ -1,6 +1,7 @@
 package tgit.inventory.ui;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -120,11 +121,14 @@ public class SplitProductActivity extends ActionBarActivity {
         private void getProduct(String itemId){
             String url = Config.getItemURL(itemId);
             Log.v(TAG, "获取产品信息："+url);
-
+            final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "数据加载",
+                    "正在加载数据，请稍后", true);
             RestClient.get(url, null, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     super.onSuccess(statusCode, headers, response);
+
+                    progressDialog.dismiss();
 
                     //map the result to mProduct
                     Gson g = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
@@ -199,12 +203,14 @@ public class SplitProductActivity extends ActionBarActivity {
             }
 
             try {
+                final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "保存拆分",
+                        "正在保存数据，请稍后", true);
                 RestClient.postJson(getActivity(), Config.PRODUCT_SPLIT_URL, jsonObject, new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         super.onSuccess(statusCode, headers, response);
                         Log.v(TAG, "返回JSONObject:"+response.toString());
-
+                        progressDialog.dismiss();
                         try {
                             int status = response.getInt("status");
                             String msg = response.getString("msg");
