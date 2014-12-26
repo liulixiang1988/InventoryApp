@@ -70,7 +70,7 @@ public class SplitActivity extends ActionBarActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btnInvSplit:
+            case R.id.btnSearch:
                 onSplitBtnClicked();
                 break;
             case R.id.btnClear:
