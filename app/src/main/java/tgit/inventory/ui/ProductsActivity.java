@@ -70,6 +70,7 @@ public class ProductsActivity extends ActionBarActivity {
     public static class ProductListFragment extends ListFragment {
         public static final String TAG = ProductListFragment.class.getSimpleName();
         private List<Product> productList = new ArrayList<Product>();
+        private String mItemCode;
         public static final String KEY_PRODUCT = "KEY_PRODUCT";
         public static final String KEY_INLOCATOR = "KEY_INLOCATOR";
 
@@ -80,7 +81,46 @@ public class ProductsActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_products, container, false);
-            String itemCode = getActivity().getIntent().getStringExtra(Constants.ITEM_CODE);
+            mItemCode = getActivity().getIntent().getStringExtra(Constants.ITEM_CODE);
+
+            return rootView;
+        }
+
+        @Override
+        public void onStart() {
+            super.onStart();
+            Log.v(TAG, "onStart");
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            Log.v(TAG, "onResume");
+            loadData(mItemCode);
+        }
+
+        @Override
+        public void onPause() {
+            Log.v(TAG, "OnPause");
+            super.onPause();
+        }
+
+        @Override
+        public void onStop() {
+            Log.v(TAG, "OnStop");
+            super.onStop();
+        }
+
+        @Override
+        public void onListItemClick(ListView l, View v, int position, long id) {
+            super.onListItemClick(l, v, position, id);
+            String itemId = this.productList.get(position).getId();
+            Intent i = new Intent(getActivity(), SplitProductActivity.class);
+            i.putExtra(Constants.ITEM_ID, itemId);
+            startActivity(i);
+        }
+
+        private void loadData(String itemCode){
             RestClient.get(Config.getItemsURL(itemCode), null, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
@@ -107,7 +147,7 @@ public class ProductsActivity extends ActionBarActivity {
                             products.add(productInfo);
                         }
                         Log.v(TAG, productList.toString());
-                        String[] keys = { KEY_PRODUCT, KEY_INLOCATOR };
+                        String[] keys = { KEY_INLOCATOR, KEY_PRODUCT };
                         int[] ids = { android.R.id.text1, android.R.id.text2 };
                         SimpleAdapter adapter = new SimpleAdapter(
                                 getActivity(),
@@ -121,16 +161,6 @@ public class ProductsActivity extends ActionBarActivity {
                     }
                 }
             });
-            return rootView;
-        }
-
-        @Override
-        public void onListItemClick(ListView l, View v, int position, long id) {
-            super.onListItemClick(l, v, position, id);
-            String itemId = this.productList.get(position).getId();
-            Intent i = new Intent(getActivity(), SplitProductActivity.class);
-            i.putExtra(Constants.ITEM_ID, itemId);
-            startActivity(i);
         }
     }
 }

@@ -211,33 +211,14 @@ public class SplitProductActivity extends ActionBarActivity {
                                 UIHelper.alert(getActivity(),
                                         R.string.title_activity_split_product,
                                         msg);
-                                return;
+                            }else{
+                                UIHelper.toastMessage(getActivity(), msg);
                             }
-
-                            UIHelper.toastMessage(getActivity(), msg);
-
+                            getActivity().finish();
                         } catch (JSONException e) {
                             UIHelper.alert(getActivity(), R.string.title_activity_split_product,
                                     "返回数据有误:"+e.getMessage());
                         }
-                    }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers,
-                                          Throwable throwable, JSONObject errorResponse) {
-                        Log.e(TAG, "发生错误3 Statuscode:" + statusCode + " ");
-                        UIHelper.toastMessage(getActivity(), "发生错误3 状态：" + statusCode);
-                    }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers,
-                                          String responseString, Throwable throwable) {
-                        Log.e(TAG, "发生错误4+status code:" + statusCode);
-                        for (Header header : headers) {
-                            Log.e(TAG, header.getName() + ":" + header.getValue());
-                        }
-                        Log.e(TAG, responseString);
-                        super.onFailure(statusCode, headers, responseString, throwable);
                     }
                 });
             } catch (UnsupportedEncodingException e) {
