@@ -16,6 +16,7 @@
         android:textSize="36sp"
         android:hint="@string/split_item_code"
         android:layout_marginTop="83dp"
+        android:singleLine="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
@@ -29,4 +30,14 @@
         android:layout_below="@+id/edtItemCode"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="46dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_clear"
+        android:id="@+id/btnClear"
+        android:textSize="24sp"
+        android:layout_below="@+id/btnSearch"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"/>
 </RelativeLayout>

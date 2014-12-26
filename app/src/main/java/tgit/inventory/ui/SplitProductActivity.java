@@ -71,6 +71,7 @@ public class SplitProductActivity extends ActionBarActivity {
     public static class PlaceholderFragment extends Fragment implements View.OnClickListener, TextWatcher {
         public static final String TAG = PlaceholderFragment.class.getSimpleName();
         private Product mProduct;
+        private String mLeftWeight;
         private TextView txtProductName, txtInLocator, txtProductNo, txtInLocatorId,
                 txtModel,txtSpecification, txtTemp, txtBatchNumber, txtProductDate, txtSuttle,
                 txtLeftWeight;
@@ -177,7 +178,7 @@ public class SplitProductActivity extends ActionBarActivity {
                 return;
             }
 
-            keepSplit(mProduct.getId(), txtLeftWeight.getText().toString().trim(), splitWeightStr);
+            keepSplit(mProduct.getId(), mLeftWeight, splitWeightStr);
         }
 
         private void keepSplit(String productId, String leftWeight, String splitWeight){
@@ -249,8 +250,8 @@ public class SplitProductActivity extends ActionBarActivity {
             double splitWeight = Double.parseDouble(splitWeightStr);
             double originWeight = Double.parseDouble(mProduct.getSuttle());
             double leftWeight = originWeight - splitWeight;
-            String leftWeightStr = String.format("%1.3f", leftWeight);
-            txtLeftWeight.setText("剩余量："+leftWeightStr);
+            mLeftWeight = String.format("%1.3f", leftWeight);
+            txtLeftWeight.setText("剩余量："+mLeftWeight);
 
         }
     }

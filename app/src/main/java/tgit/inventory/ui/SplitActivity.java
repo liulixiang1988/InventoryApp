@@ -39,6 +39,9 @@ public class SplitActivity extends ActionBarActivity implements View.OnClickList
         edtItemCode = (EditText) findViewById(R.id.edtItemCode);
         Button searchBtn = (Button) findViewById(R.id.btnSearch);
         searchBtn.setOnClickListener(this);
+
+        Button clearBtn = (Button) findViewById(R.id.btnClear);
+        clearBtn.setOnClickListener(this);
     }
 
 
@@ -66,6 +69,21 @@ public class SplitActivity extends ActionBarActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnInvSplit:
+                onSplitBtnClicked();
+                break;
+            case R.id.btnClear:
+                onClearBtnClicked();
+                break;
+        }
+    }
+
+    private void onClearBtnClicked() {
+        edtItemCode.setText("");
+    }
+
+    public void onSplitBtnClicked(){
         String itemCode = edtItemCode.getText().toString().trim();
         if (itemCode.isEmpty()){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
