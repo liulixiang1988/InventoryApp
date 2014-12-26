@@ -1,0 +1,102 @@
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="tgit.inventory.ui.SplitProductActivity$PlaceholderFragment">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="物料名称:"
+        android:id="@+id/txtProductName"
+        android:textSize="36sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="货位:"
+        android:id="@+id/txtInLocator"
+        android:textSize="36sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="产品编号:"
+        android:textSize="36sp"
+        android:id="@+id/txtProductNo"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="货位编号:"
+        android:textSize="36sp"
+        android:id="@+id/txtInLocatorId"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="牌号:"
+        android:textSize="36sp"
+        android:id="@+id/txtModel"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="规格:"
+        android:textSize="36sp"
+        android:id="@+id/txtSpecification"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="状态:"
+        android:textSize="36sp"
+        android:id="@+id/txtTemp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="批号:"
+        android:textSize="36sp"
+        android:id="@+id/txtBatchNumber"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="生产日期:"
+        android:textSize="36sp"
+        android:id="@+id/txtProductDate"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="净重:"
+        android:textSize="36sp"
+        android:id="@+id/txtSuttle"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="剩余量:"
+        android:textSize="36sp"
+        android:id="@+id/txtLeftWeight"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtSplitWeight"
+        android:hint="拆分量"
+        android:textSize="36sp"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="拆分"
+        android:textSize="36sp"
+        android:id="@+id/btnOk"/>
+</LinearLayout>
+
+</ScrollView >

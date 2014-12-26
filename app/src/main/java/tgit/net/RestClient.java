@@ -6,8 +6,12 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
 import org.apache.http.HttpEntity;
+import org.apache.http.entity.StringEntity;
+import org.json.JSONObject;
 import tgit.config.Config;
 import com.loopj.android.http.AsyncHttpClient;
+
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by liulixiang on 2014/12/24.
@@ -38,6 +42,13 @@ public class RestClient {
 
     public static void postJson(Context context, String url, HttpEntity entity,  ResponseHandlerInterface responseHandler){
         Log.v(TAG, "请求Url:" + getAbsoluteUrl(url));
+        String contentType = "application/json";
+        client.post(context, getAbsoluteUrl(url), entity, contentType, responseHandler);
+    }
+
+    public static void postJson(Context context, String url, JSONObject jsonObject,  ResponseHandlerInterface responseHandler) throws UnsupportedEncodingException {
+        Log.v(TAG, "请求Url:" + getAbsoluteUrl(url));
+        StringEntity entity = new StringEntity(jsonObject.toString());
         String contentType = "application/json";
         client.post(context, getAbsoluteUrl(url), entity, contentType, responseHandler);
     }

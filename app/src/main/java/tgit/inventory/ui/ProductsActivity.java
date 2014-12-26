@@ -1,5 +1,6 @@
 package tgit.inventory.ui;
 
+import android.content.Intent;
 import android.support.v4.app.ListFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -116,7 +117,7 @@ public class ProductsActivity extends ActionBarActivity {
                         setListAdapter(adapter);
                     } catch (JSONException e) {
                         Log.e(TAG, "解析物料列表：" + e.toString(), e);
-                        UIHelper.ToastMessage(getActivity(), e.toString());
+                        UIHelper.toastMessage(getActivity(), e.toString());
                     }
                 }
             });
@@ -126,6 +127,10 @@ public class ProductsActivity extends ActionBarActivity {
         @Override
         public void onListItemClick(ListView l, View v, int position, long id) {
             super.onListItemClick(l, v, position, id);
+            String itemId = this.productList.get(position).getId();
+            Intent i = new Intent(getActivity(), SplitProductActivity.class);
+            i.putExtra(Constants.ITEM_ID, itemId);
+            startActivity(i);
         }
     }
 }

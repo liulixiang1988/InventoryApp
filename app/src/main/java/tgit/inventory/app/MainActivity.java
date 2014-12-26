@@ -30,7 +30,7 @@ public class MainActivity extends ActionBarActivity {
         Config.initializeConfig(this);
 
         if (Config.getBaseURL(this).isEmpty()) {
-            UIHelper.ToastMessage(this, "IP地址没有配置");
+            UIHelper.toastMessage(this, "IP地址没有配置");
             Intent i = new Intent(this, IPConfigActivity.class);
             startActivity(i);
         }

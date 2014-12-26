@@ -69,12 +69,12 @@ public class IPConfigActivity extends ActionBarActivity implements View.OnClickL
 
     private void btnSaveIpConfig_click(){
         if(TextUtils.isEmpty(edtIpAddress.getText())){
-            UIHelper.ToastMessage(this, "IP地址不能为空!");
+            UIHelper.toastMessage(this, "IP地址不能为空!");
         }
 
         Log.v(TAG, "保存IP为：" + getIpAddress());
         Config.setBaseURL(this, getIpAddress());
-        UIHelper.ToastMessage(this, "IP保存成功");
+        UIHelper.toastMessage(this, "IP保存成功");
         finish();
     }
 }

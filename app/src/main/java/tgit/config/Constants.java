@@ -5,4 +5,5 @@ package tgit.config;
  */
 public final class Constants {
     public static final String ITEM_CODE = "ITEM_CODE";
+    public static final String ITEM_ID = "ITEM_ID";
 }

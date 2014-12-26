@@ -30,5 +30,6 @@
     <string name="split_search_alert_msg">包装条码不能为空</string>
     <string name="title_activity_products">包装列表</string>
     <string name="empty_product_label">没有对应的记录</string>
+    <string name="title_activity_split_product">包装信息</string>
 
 </resources>

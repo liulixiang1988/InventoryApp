@@ -14,6 +14,8 @@ public class Config {
     public static final String INV_IN = "inventory/in";
     public static final String INV_OUT = "inventory/out";
 
+    public static final String PRODUCT_SPLIT_URL = "product/split";
+
     public static final String APP_ID = "liulx.data_center";
     public static final String INV_TYPE = "inv_type";
 
@@ -48,5 +50,9 @@ public class Config {
 
     public static String getItemsURL(String itemCode){
         return "product/"+itemCode;
+    }
+
+    public static String getItemURL(String itemId){
+        return "product/item/"+itemId;
     }
 }

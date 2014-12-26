@@ -1,6 +1,5 @@
 package tgit.inventory.ui;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +8,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import com.google.gson.Gson;
@@ -99,7 +97,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
                     String token = response.getString("token");
                     Log.v(TAG, "返回的令牌：" + token);
                     RestClient.getClient().addHeader("Authorization", "Token " + token);
-                    UIHelper.ToastMessage(LoginActivity.this, "登录成功");
+                    UIHelper.toastMessage(LoginActivity.this, "登录成功");
 
                     Gson g = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
                     String resultJson = response.getJSONObject("userinfo").toString();
@@ -113,7 +111,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
                     startActivity(i);
                 } catch (JSONException e) {
                     Log.v(TAG, "A发生错误：" + e.toString());
-                    UIHelper.ToastMessage(LoginActivity.this, e.toString());
+                    UIHelper.toastMessage(LoginActivity.this, e.toString());
                 }
             }
 
@@ -125,7 +123,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
                 for (Header header : headers) {
                     Log.v(TAG, header.getName() + ":" + header.getValue());
                 }
-                UIHelper.ToastMessage(LoginActivity.this, throwable.getMessage());
+                UIHelper.toastMessage(LoginActivity.this, throwable.getMessage());
             }
 
             @Override

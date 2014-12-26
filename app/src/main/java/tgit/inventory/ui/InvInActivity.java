@@ -108,7 +108,7 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
     private void btnSend_onClick(){
         Log.v(TAG, "发送按钮点击");
         if(TextUtils.isEmpty(getItemsCode()) || TextUtils.isEmpty(edtInvCode.getText())){
-            UIHelper.ToastMessage(this, "物料条码和货位条码不能为空");
+            UIHelper.toastMessage(this, "物料条码和货位条码不能为空");
             return;
         }
         JSONObject jsonParams = new JSONObject();
@@ -126,14 +126,14 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
                     try {
                         String msg = response.getString("msg");
                         Log.v(TAG, "返回的消息：" + msg);
-                        UIHelper.ToastMessage(InvInActivity.this, msg);
+                        UIHelper.toastMessage(InvInActivity.this, msg);
                         int resultCode = response.getInt("status");
                         if (resultCode == 1) {
                             clearText();
                         }
                     } catch (JSONException e) {
                         Log.e(TAG, "A发生错误：" + e.toString());
-                        UIHelper.ToastMessage(InvInActivity.this, e.toString());
+                        UIHelper.toastMessage(InvInActivity.this, e.toString());
                     }
                 }
 
@@ -142,7 +142,7 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
                                       Throwable throwable, JSONObject errorResponse) {
                     progressBar.setVisibility(View.INVISIBLE);
                     Log.e(TAG, "发生错误3 Statuscode:" + statusCode + " ");
-                    UIHelper.ToastMessage(InvInActivity.this, "发生错误3 状态：" + statusCode);
+                    UIHelper.toastMessage(InvInActivity.this, "发生错误3 状态：" + statusCode);
                 }
 
                 @Override
@@ -160,11 +160,11 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
         }
         catch (JSONException e) {
             Log.e(TAG, "B发生错误："+e.toString());
-            UIHelper.ToastMessage(InvInActivity.this, e.toString());
+            UIHelper.toastMessage(InvInActivity.this, e.toString());
         }
         catch (UnsupportedEncodingException e) {
             Log.e(TAG, "C发生错误："+e.toString());
-            UIHelper.ToastMessage(InvInActivity.this, e.toString());
+            UIHelper.toastMessage(InvInActivity.this, e.toString());
         }
         catch(Exception e){
             Log.e(TAG, "D发生错误" + e.toString());
