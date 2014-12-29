@@ -22,6 +22,7 @@ import tgit.config.Config;
 import tgit.inventory.app.MainActivity;
 import tgit.inventory.app.R;
 import tgit.model.User;
+import tgit.net.NetTools;
 import tgit.net.RestClient;
 import tgit.session.CurrentUser;
 import tgit.util.UIHelper;
@@ -47,6 +48,10 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
         edtPassword = (EditText) findViewById(R.id.edtPassword);
 
         btnLogin.setOnClickListener(this);
+
+        if (!NetTools.isNetworkAvailable(this)){
+            UIHelper.alert(this, "网络问题", "网络连接失败，请检查网络设置");
+        }
     }
 
 
@@ -120,13 +125,9 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
             @Override
             public void onFailure(int statusCode, Header[] headers,
                                   Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
                 progressDialog.dismiss();
-                Log.v(TAG, "发生错误3" + throwable.getMessage());
-                for (Header header : headers) {
-                    Log.v(TAG, header.getName() + ":" + header.getValue());
-                }
-                UIHelper.toastMessage(LoginActivity.this, throwable.getMessage());
+
+                UIHelper.alert(LoginActivity.this, "登录失败", throwable.getMessage());
             }
 
             @Override
