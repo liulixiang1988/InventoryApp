@@ -25,7 +25,7 @@ public class InvOutActivity extends ActionBarActivity implements View.OnClickLis
 
 
     public final static String TAG = InvOutActivity.class.getSimpleName();
-    private EditText edtItemCode;
+    private EditText edtDeliveryNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class InvOutActivity extends ActionBarActivity implements View.OnClickLis
         setContentView(R.layout.activity_inv_out);
 
         Button btnSave = (Button) findViewById(R.id.btnSave);
-        edtItemCode = (EditText) findViewById(R.id.edtItemCode);
+        edtDeliveryNumber = (EditText) findViewById(R.id.edtDeliveryNumber);
 
         btnSave.setOnClickListener(this);
     }
@@ -65,23 +65,23 @@ public class InvOutActivity extends ActionBarActivity implements View.OnClickLis
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.btnSave:
-                saveItemCode();
+                createDelivery();
                 break;
         }
     }
 
-    private void saveItemCode(){
+    private void createDelivery(){
         Log.v(TAG, "发送按钮点击");
-        if(TextUtils.isEmpty(getItemCode())){
-            UIHelper.toastMessage(this, "物料条码不能为空");
+        if(TextUtils.isEmpty(getDeliveryNumber())){
+            UIHelper.alert(this,"错误", "挑库编码不能为空");
             return;
         }
         JSONObject jsonParams = new JSONObject();
         try {
-            jsonParams.put("item_code", getItemCode());
+            jsonParams.put("DeliveryNumber", getDeliveryNumber());
             Log.v(TAG, jsonParams.toString());
             StringEntity entity = new StringEntity(jsonParams.toString());
-            RestClient.postJson(this, Config.INV_OUT, entity, new JsonHttpResponseHandler() {
+            RestClient.postJson(this, Config.INV_DELIVERY, entity, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers,
                                       JSONObject response) {
@@ -102,19 +102,14 @@ public class InvOutActivity extends ActionBarActivity implements View.OnClickLis
                 @Override
                 public void onFailure(int statusCode, Header[] headers,
                                       Throwable throwable, JSONObject errorResponse) {
-                    Log.e(TAG, "发生错误3 Statuscode:" + statusCode + " ");
+                    Log.e(TAG, "发生错误3:" + throwable.getMessage());
                     UIHelper.toastMessage(InvOutActivity.this, "发生错误3 状态：" + statusCode);
                 }
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers,
                                       String responseString, Throwable throwable) {
-                    Log.e(TAG, "发生错误4+status code:" + statusCode);
-                    for (Header header : headers) {
-                        Log.e(TAG, header.getName() + ":" + header.getValue());
-                    }
-                    Log.e(TAG, responseString);
-                    super.onFailure(statusCode, headers, responseString, throwable);
+                    Log.e(TAG, "发生错误4:" + throwable.getMessage());
                 }
             });
         }
@@ -132,11 +127,11 @@ public class InvOutActivity extends ActionBarActivity implements View.OnClickLis
         Log.v(TAG, "发送结束");
     }
 
-    public String getItemCode(){
-        return edtItemCode.getText().toString();
+    public String getDeliveryNumber(){
+        return edtDeliveryNumber.getText().toString();
     }
 
     private void clearText() {
-        edtItemCode.getText().clear();
+        edtDeliveryNumber.getText().clear();
     }
 }

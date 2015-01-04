@@ -13,6 +13,7 @@ public class Config {
     public static final String URL_LOGIN = "login";
     public static final String INV_IN = "inventory/in";
     public static final String INV_OUT = "inventory/out";
+    public static final String INV_DELIVERY = "inventory/createDelivery";
 
     public static final String PRODUCT_SPLIT_URL = "product/split";
 

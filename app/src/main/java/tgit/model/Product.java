@@ -22,6 +22,8 @@ public class Product {
     private String model;
     private String specification;
     private String productDate;
+    private String inSubinventoryId;
+    private String inSubinventory;
     private String isSplitted;
 
     public String getId() {
@@ -166,6 +168,22 @@ public class Product {
 
     public void setProductDate(String productDate) {
         this.productDate = productDate;
+    }
+
+    public String getInSubinventoryId() {
+        return inSubinventoryId;
+    }
+
+    public void setInSubinventoryId(String inSubinventoryId) {
+        this.inSubinventoryId = inSubinventoryId;
+    }
+
+    public String getInSubinventory() {
+        return inSubinventory;
+    }
+
+    public void setInSubinventory(String inSubinventory) {
+        this.inSubinventory = inSubinventory;
     }
 
     public String getIsSplitted() {
