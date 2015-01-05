@@ -59,24 +59,18 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="tgit.inventory.ui.ProductsActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/title_activity_products"
-            android:parentActivityName="tgit.inventory.ui.SplitActivity"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="tgit.inventory.ui.SplitActivity" />
+            android:name="tgit.inventory.ui.SplitProductsActivity"
+            android:label="@string/title_activity_split_products" >
         </activity>
         <activity
             android:name="tgit.inventory.ui.SplitProductActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
             android:label="@string/title_activity_split_product"
-            android:parentActivityName="tgit.inventory.ui.ProductsActivity" >
+            android:parentActivityName="tgit.inventory.ui.SplitProductsActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="tgit.inventory.ui.ProductsActivity" />
+                android:value="tgit.inventory.ui.SplitProductsActivity" />
         </activity>
     </application>
 

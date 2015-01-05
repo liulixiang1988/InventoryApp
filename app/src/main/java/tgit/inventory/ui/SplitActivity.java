@@ -4,29 +4,13 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tgit.config.Config;
 import tgit.config.Constants;
 import tgit.inventory.app.R;
-import tgit.model.Product;
-import tgit.net.RestClient;
-import tgit.util.UIHelper;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SplitActivity extends ActionBarActivity implements View.OnClickListener {
     public static final String TAG = SplitActivity.class.getSimpleName();
@@ -96,7 +80,7 @@ public class SplitActivity extends ActionBarActivity implements View.OnClickList
             return;
         }
 
-        Intent i = new Intent(this, ProductsActivity.class);
+        Intent i = new Intent(this, SplitProductsActivity.class);
         i.putExtra(Constants.ITEM_CODE, itemCode);
         startActivity(i);
     }

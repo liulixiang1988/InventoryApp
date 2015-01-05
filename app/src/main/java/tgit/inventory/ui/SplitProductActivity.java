@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import tgit.config.Config;
 import tgit.config.Constants;
 import tgit.inventory.app.R;
-import tgit.model.Product;
+import tgit.model.VProduct;
 import tgit.net.RestClient;
 import tgit.util.UIHelper;
 
@@ -71,7 +71,7 @@ public class SplitProductActivity extends ActionBarActivity {
      */
     public static class PlaceholderFragment extends Fragment implements View.OnClickListener, TextWatcher {
         public static final String TAG = PlaceholderFragment.class.getSimpleName();
-        private Product mProduct;
+        private VProduct mVProduct;
         private String mLeftWeight;
         private TextView txtProductName, txtInLocator, txtProductNo, txtInLocatorId,
                 txtModel,txtSpecification, txtTemp, txtBatchNumber, txtProductDate, txtSuttle,
@@ -136,37 +136,37 @@ public class SplitProductActivity extends ActionBarActivity {
 
                     progressDialog.dismiss();
 
-                    //map the result to mProduct
+                    //map the result to mVProduct
                     Gson g = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
                             .create();
                     String responseString = response.toString();
                     Log.v(TAG, "返回值："+responseString);
 
-                    mProduct = g.fromJson(responseString, Product.class);
+                    mVProduct = g.fromJson(responseString, VProduct.class);
                     setProductView();
                 }
             });
         }
 
         private void setProductView(){
-            if (mProduct == null) return;
+            if (mVProduct == null) return;
 
-            txtProductName.append(mProduct.getProductName());
-            txtInLocator.append(mProduct.getInLocator());
-            txtProductNo.append(mProduct.getProductNo());
-            txtInLocatorId.append(mProduct.getInLocatorId());
-            txtModel.append(mProduct.getModel());
-            txtSpecification.append(mProduct.getSpecification());
-            txtTemp.append(mProduct.getTemp());
-            txtBatchNumber.append(mProduct.getBatchNumber());
-            txtProductDate.append(mProduct.getProductDate());
-            txtSuttle.append(mProduct.getSuttle());
+            txtProductName.append(mVProduct.getProductName());
+            txtInLocator.append(mVProduct.getInLocator());
+            txtProductNo.append(mVProduct.getProductNo());
+            txtInLocatorId.append(mVProduct.getInLocatorId());
+            txtModel.append(mVProduct.getModel());
+            txtSpecification.append(mVProduct.getSpecification());
+            txtTemp.append(mVProduct.getTemp());
+            txtBatchNumber.append(mVProduct.getBatchNumber());
+            txtProductDate.append(mVProduct.getProductDate());
+            txtSuttle.append(mVProduct.getSuttle());
         }
 
         @Override
         public void onClick(View v) {
             String splitWeightStr = edtSplitWeight.getText().toString().trim();
-            if (mProduct == null || splitWeightStr.isEmpty()){
+            if (mVProduct == null || splitWeightStr.isEmpty()){
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle(R.string.title_activity_split_product)
                         .setMessage("当前没有对应的记录，或者没有输入拆包重量")
@@ -177,7 +177,7 @@ public class SplitProductActivity extends ActionBarActivity {
             }
 
             double splitWeight = Double.parseDouble(splitWeightStr);
-            double originWeight = Double.parseDouble(mProduct.getSuttle());
+            double originWeight = Double.parseDouble(mVProduct.getSuttle());
             if (originWeight < splitWeight){
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle(R.string.title_activity_split_product)
@@ -188,7 +188,7 @@ public class SplitProductActivity extends ActionBarActivity {
                 return;
             }
 
-            keepSplit(mProduct.getId(), mLeftWeight, splitWeightStr);
+            keepSplit(mVProduct.getId(), mLeftWeight, splitWeightStr);
         }
 
         private void keepSplit(String productId, String leftWeight, String splitWeight){
@@ -260,7 +260,7 @@ public class SplitProductActivity extends ActionBarActivity {
             String splitWeightStr = edtSplitWeight.getText().toString().trim();
             if (splitWeightStr.isEmpty()) return;
             double splitWeight = Double.parseDouble(splitWeightStr);
-            double originWeight = Double.parseDouble(mProduct.getSuttle());
+            double originWeight = Double.parseDouble(mVProduct.getSuttle());
             double leftWeight = originWeight - splitWeight;
             mLeftWeight = String.format("%1.3f", leftWeight);
             txtLeftWeight.setText("剩余量："+mLeftWeight);
