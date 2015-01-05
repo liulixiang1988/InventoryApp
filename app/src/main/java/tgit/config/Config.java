@@ -56,4 +56,6 @@ public class Config {
     public static String getItemURL(String itemId){
         return "product/item/"+itemId;
     }
+
+    public static String getPrintURL(String itemId){return "product/split/"+itemId;}
 }

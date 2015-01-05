@@ -1,609 +1,610 @@
 package tgit.model;
 
+import java.util.Date;
+
 /**
  * Created by liulixiang on 2015/1/5.
  * Description: 产品信息
  */
 public class Product {
-    private String privateId;
+    private String id;
 
-    public final String getId() {
-        return privateId;
-    }
-
-    public final void setId(String value) {
-        privateId = value;
-    }
-
-    private String privateOrgCode;
-
-    public final String getOrgCode() {
-        return privateOrgCode;
-    }
-
-    public final void setOrgCode(String value) {
-        privateOrgCode = value;
-    }
+    private String orgCode;
 
     /**
      * 工序编码
      */
-    private String privateWorkshopCode;
-
-    public final String getWorkshopCode() {
-        return privateWorkshopCode;
-    }
-
-    public final void setWorkshopCode(String value) {
-        privateWorkshopCode = value;
-    }
-
+    private String workshopCode;
 
     /**
      * 工序名称
      */
-    private String privateWorkshopName;
-
-    public final String getWorkshopName() {
-        return privateWorkshopName;
-    }
-
-    public final void setWorkshopName(String value) {
-        privateWorkshopName = value;
-    }
+    private String workshopName;
 
     /**
      * 产品编号
      */
-    private String privateProductNo;
-
-    public final String getProductNo() {
-        return privateProductNo;
-    }
-
-    public final void setProductNo(String value) {
-        privateProductNo = value;
-    }
+    private String productNo;
 
     /**
      * 批次编号
      */
-    private String privateBatchNumber;
-
-    public final String getBatchNumber() {
-        return privateBatchNumber;
-    }
-
-    public final void setBatchNumber(String value) {
-        privateBatchNumber = value;
-    }
+    private String batchNumber;
 
     /**
      * 物料编码
      */
-    private String privateMaterialNumber;
-
-    public final String getMaterialNumber() {
-        return privateMaterialNumber;
-    }
-
-    public final void setMaterialNumber(String value) {
-        privateMaterialNumber = value;
-    }
+    private String materialNumber;
 
     /**
      * 产品名称
      */
-    private String privateProductName;
-
-    public final String getProductName() {
-        return privateProductName;
-    }
-
-    public final void setProductName(String value) {
-        privateProductName = value;
-    }
+    private String productName;
 
     /**
      * 毛重
      */
-    private String privateGross;
-
-    public final String getGross() {
-        return privateGross;
-    }
-
-    public final void setGross(String value) {
-        privateGross = value;
-    }
+    private String gross;
 
     /**
      * 皮重
      */
-    private String privateTare;
-
-    public final String getTare() {
-        return privateTare;
-    }
-
-    public final void setTare(String value) {
-        privateTare = value;
-    }
+    private String tare;
 
     /**
      * 净重
      */
-    private String privateSuttle;
-
-    public final String getSuttle() {
-        return privateSuttle;
-    }
-
-    public final void setSuttle(String value) {
-        privateSuttle = value;
-    }
+    private String suttle;
 
     /**
      * 货位编号
      */
-    private String privateInLocatorId;
-
-    public final String getInLocatorId() {
-        return privateInLocatorId;
-    }
-
-    public final void setInLocatorId(String value) {
-        privateInLocatorId = value;
-    }
+    private String inLocatorId;
 
     /**
      * 货位编号
      */
-    private String privateInLocatorCode;
-
-    public final String getInLocatorCode() {
-        return privateInLocatorCode;
-    }
-
-    public final void setInLocatorCode(String value) {
-        privateInLocatorCode = value;
-    }
+    private String inLocatorCode;
 
     /**
      * 货位
      */
-    private String privateInLocator;
-
-    public final String getInLocator() {
-        return privateInLocator;
-    }
-
-    public final void setInLocator(String value) {
-        privateInLocator = value;
-    }
+    private String inLocator;
 
     /**
      * 状态
      */
-    private String privateTemp;
-
-    public final String getTemp() {
-        return privateTemp;
-    }
-
-    public final void setTemp(String value) {
-        privateTemp = value;
-    }
+    private String temp;
 
     /**
      * 型号
      */
-    private String privateModel;
-
-    public final String getModel() {
-        return privateModel;
-    }
-
-    public final void setModel(String value) {
-        privateModel = value;
-    }
+    private String model;
 
     /**
      * 规格
      */
-    private String privateSpecification;
-
-    public final String getSpecification() {
-        return privateSpecification;
-    }
-
-    public final void setSpecification(String value) {
-        privateSpecification = value;
-    }
+    private String specification;
 
     /**
      * 产品日期
      */
-    private String privateProductDate;
+    private String productDate;
 
-    public final String getProductDate() {
-        return privateProductDate;
-    }
+    private String inSubinventoryId;
 
-    public final void setProductDate(String value) {
-        privateProductDate = value;
-    }
+    private String inSubinventory;
 
-    private String privateInSubinventoryId;
-
-    public final String getInSubinventoryId() {
-        return privateInSubinventoryId;
-    }
-
-    public final void setInSubinventoryId(String value) {
-        privateInSubinventoryId = value;
-    }
-
-    private String privateInSubinventory;
-
-    public final String getInSubinventory() {
-        return privateInSubinventory;
-    }
-
-    public final void setInSubinventory(String value) {
-        privateInSubinventory = value;
-    }
-
-    private String privateBussinessId;
-
-    public final String getBussinessId() {
-        return privateBussinessId;
-    }
-
-    public final void setBussinessId(String value) {
-        privateBussinessId = value;
-    }
+    private String bussinessId;
 
     /**
      * 拆包前ID
      */
-    private String privateOriginId;
-
-    public final String getOriginId() {
-        return privateOriginId;
-    }
-
-    public final void setOriginId(String value) {
-        privateOriginId = value;
-    }
+    private String originId;
 
     /**
      * 拆包前产品编号
      */
-    private String privateOriginProductNo;
-
-    public final String getOriginProductNo() {
-        return privateOriginProductNo;
-    }
-
-    public final void setOriginProductNo(String value) {
-        privateOriginProductNo = value;
-    }
+    private String originProductNo;
 
     /**
      * 是否拆包，如果拆包了则不能使用
      */
-    private Boolean privateIsSplitted;
-
-    public final Boolean getIsSplitted() {
-        return privateIsSplitted;
-    }
-
-    public final void setIsSplitted(Boolean value) {
-        privateIsSplitted = value;
-    }
+    private Boolean isSplitted;
 
     /**
      * 是否发运
      */
-    private Boolean privateIsDelivered;
-
-    public final Boolean getIsDelivered() {
-        return privateIsDelivered;
-    }
-
-    public final void setIsDelivered(Boolean value) {
-        privateIsDelivered = value;
-    }
+    private Boolean isDelivered;
 
     /**
      * 发运时间
      */
-    private java.util.Date privateDeliveryTime;
-
-    public final java.util.Date getDeliveryTime() {
-        return privateDeliveryTime;
-    }
-
-    public final void setDeliveryTime(java.util.Date value) {
-        privateDeliveryTime = value;
-    }
+    private java.util.Date deliveryTime;
 
     /**
      * 是否被质计系统处理
      */
-    private Integer privateIsHandledByZJ;
-
-    public final Integer getIsHandledByZJ() {
-        return privateIsHandledByZJ;
-    }
-
-    public final void setIsHandledByZJ(Integer value) {
-        privateIsHandledByZJ = value;
-    }
+    private Integer isHandledByZJ;
 
     /**
      * 质计处理时间
      */
-    private java.util.Date privateHandleTime;
-
-    public final java.util.Date getHandleTime() {
-        return privateHandleTime;
-    }
-
-    public final void setHandleTime(java.util.Date value) {
-        privateHandleTime = value;
-    }
+    private java.util.Date handleTime;
 
     /**
      * 是否打印
      */
-    private Boolean privateIsPrinted;
-
-    public final Boolean getIsPrinted() {
-        return privateIsPrinted;
-    }
-
-    public final void setIsPrinted(Boolean value) {
-        privateIsPrinted = value;
-    }
+    private Boolean isPrinted;
 
     /**
      * 打印次数
      */
-    private Integer privatePrintedTimes;
-
-    public final Integer getPrintedTimes() {
-        return privatePrintedTimes;
-    }
-
-    public final void setPrintedTimes(Integer value) {
-        privatePrintedTimes = value;
-    }
+    private Integer printedTimes;
 
     /**
      * 打印时间
      */
-    private java.util.Date privateLastPrintedTime;
-
-    public final java.util.Date getLastPrintedTime() {
-        return privateLastPrintedTime;
-    }
-
-    public final void setLastPrintedTime(java.util.Date value) {
-        privateLastPrintedTime = value;
-    }
+    private java.util.Date lastPrintedTime;
 
     /**
      * 创建时间
      */
-    private java.util.Date privateCreateTime;
+    private java.util.Date createTime;
 
-    public final java.util.Date getCreateTime() {
-        return privateCreateTime;
+    private String createUserId;
+
+    private String createUserName;
+
+    private java.util.Date lastUpdateTime;
+
+    private String lastUpdateUserId;
+
+    private String lastUpdateUserName;
+
+    private String attribute1;
+
+    private String attribute2;
+
+    private String attribute3;
+
+    private String attribute4;
+
+    private String attribute5;
+
+    private String attribute6;
+
+    private String attribute7;
+
+    private String attribute8;
+
+    private String attribute9;
+
+    private String attribute10;
+
+    private String attribute11;
+
+    private String attribute12;
+
+    private String attribute13;
+
+    private String attribute14;
+
+    private String attribute15;
+
+    public String getId() {
+        return id;
     }
 
-    public final void setCreateTime(java.util.Date value) {
-        privateCreateTime = value;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    private String privateCreateUserId;
-
-    public final String getCreateUserId() {
-        return privateCreateUserId;
+    public String getOrgCode() {
+        return orgCode;
     }
 
-    public final void setCreateUserId(String value) {
-        privateCreateUserId = value;
+    public void setOrgCode(String orgCode) {
+        this.orgCode = orgCode;
     }
 
-    private String privateCreateUserName;
-
-    public final String getCreateUserName() {
-        return privateCreateUserName;
+    public String getWorkshopCode() {
+        return workshopCode;
     }
 
-    public final void setCreateUserName(String value) {
-        privateCreateUserName = value;
+    public void setWorkshopCode(String workshopCode) {
+        this.workshopCode = workshopCode;
     }
 
-    private java.util.Date privateLastUpdateTime;
-
-    public final java.util.Date getLastUpdateTime() {
-        return privateLastUpdateTime;
+    public String getWorkshopName() {
+        return workshopName;
     }
 
-    public final void setLastUpdateTime(java.util.Date value) {
-        privateLastUpdateTime = value;
+    public void setWorkshopName(String workshopName) {
+        this.workshopName = workshopName;
     }
 
-    private String privateLastUpdateUserId;
-
-    public final String getLastUpdateUserId() {
-        return privateLastUpdateUserId;
+    public String getProductNo() {
+        return productNo;
     }
 
-    public final void setLastUpdateUserId(String value) {
-        privateLastUpdateUserId = value;
+    public void setProductNo(String productNo) {
+        this.productNo = productNo;
     }
 
-    private String privateLastUpdateUserName;
-
-    public final String getLastUpdateUserName() {
-        return privateLastUpdateUserName;
+    public String getBatchNumber() {
+        return batchNumber;
     }
 
-    public final void setLastUpdateUserName(String value) {
-        privateLastUpdateUserName = value;
+    public void setBatchNumber(String batchNumber) {
+        this.batchNumber = batchNumber;
     }
 
-    private String privateAttribute1;
-
-    public final String getAttribute1() {
-        return privateAttribute1;
+    public String getMaterialNumber() {
+        return materialNumber;
     }
 
-    public final void setAttribute1(String value) {
-        privateAttribute1 = value;
+    public void setMaterialNumber(String materialNumber) {
+        this.materialNumber = materialNumber;
     }
 
-    private String privateAttribute2;
-
-    public final String getAttribute2() {
-        return privateAttribute2;
+    public String getProductName() {
+        return productName;
     }
 
-    public final void setAttribute2(String value) {
-        privateAttribute2 = value;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    private String privateAttribute3;
-
-    public final String getAttribute3() {
-        return privateAttribute3;
+    public String getGross() {
+        return gross;
     }
 
-    public final void setAttribute3(String value) {
-        privateAttribute3 = value;
+    public void setGross(String gross) {
+        this.gross = gross;
     }
 
-    private String privateAttribute4;
-
-    public final String getAttribute4() {
-        return privateAttribute4;
+    public String getTare() {
+        return tare;
     }
 
-    public final void setAttribute4(String value) {
-        privateAttribute4 = value;
+    public void setTare(String tare) {
+        this.tare = tare;
     }
 
-    private String privateAttribute5;
-
-    public final String getAttribute5() {
-        return privateAttribute5;
+    public String getSuttle() {
+        return suttle;
     }
 
-    public final void setAttribute5(String value) {
-        privateAttribute5 = value;
+    public void setSuttle(String suttle) {
+        this.suttle = suttle;
     }
 
-    private String privateAttribute6;
-
-    public final String getAttribute6() {
-        return privateAttribute6;
+    public String getInLocatorId() {
+        return inLocatorId;
     }
 
-    public final void setAttribute6(String value) {
-        privateAttribute6 = value;
+    public void setInLocatorId(String inLocatorId) {
+        this.inLocatorId = inLocatorId;
     }
 
-    private String privateAttribute7;
-
-    public final String getAttribute7() {
-        return privateAttribute7;
+    public String getInLocatorCode() {
+        return inLocatorCode;
     }
 
-    public final void setAttribute7(String value) {
-        privateAttribute7 = value;
+    public void setInLocatorCode(String inLocatorCode) {
+        this.inLocatorCode = inLocatorCode;
     }
 
-    private String privateAttribute8;
-
-    public final String getAttribute8() {
-        return privateAttribute8;
+    public String getInLocator() {
+        return inLocator;
     }
 
-    public final void setAttribute8(String value) {
-        privateAttribute8 = value;
+    public void setInLocator(String inLocator) {
+        this.inLocator = inLocator;
     }
 
-    private String privateAttribute9;
-
-    public final String getAttribute9() {
-        return privateAttribute9;
+    public String getTemp() {
+        return temp;
     }
 
-    public final void setAttribute9(String value) {
-        privateAttribute9 = value;
+    public void setTemp(String temp) {
+        this.temp = temp;
     }
 
-    private String privateAttribute10;
-
-    public final String getAttribute10() {
-        return privateAttribute10;
+    public String getModel() {
+        return model;
     }
 
-    public final void setAttribute10(String value) {
-        privateAttribute10 = value;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    private String privateAttribute11;
-
-    public final String getAttribute11() {
-        return privateAttribute11;
+    public String getSpecification() {
+        return specification;
     }
 
-    public final void setAttribute11(String value) {
-        privateAttribute11 = value;
+    public void setSpecification(String specification) {
+        this.specification = specification;
     }
 
-    private String privateAttribute12;
-
-    public final String getAttribute12() {
-        return privateAttribute12;
+    public String getProductDate() {
+        return productDate;
     }
 
-    public final void setAttribute12(String value) {
-        privateAttribute12 = value;
+    public void setProductDate(String productDate) {
+        this.productDate = productDate;
     }
 
-    private String privateAttribute13;
-
-    public final String getAttribute13() {
-        return privateAttribute13;
+    public String getInSubinventoryId() {
+        return inSubinventoryId;
     }
 
-    public final void setAttribute13(String value) {
-        privateAttribute13 = value;
+    public void setInSubinventoryId(String inSubinventoryId) {
+        this.inSubinventoryId = inSubinventoryId;
     }
 
-    private String privateAttribute14;
-
-    public final String getAttribute14() {
-        return privateAttribute14;
+    public String getInSubinventory() {
+        return inSubinventory;
     }
 
-    public final void setAttribute14(String value) {
-        privateAttribute14 = value;
+    public void setInSubinventory(String inSubinventory) {
+        this.inSubinventory = inSubinventory;
     }
 
-    private String privateAttribute15;
-
-    public final String getAttribute15() {
-        return privateAttribute15;
+    public String getBussinessId() {
+        return bussinessId;
     }
 
-    public final void setAttribute15(String value) {
-        privateAttribute15 = value;
+    public void setBussinessId(String bussinessId) {
+        this.bussinessId = bussinessId;
+    }
+
+    public String getOriginId() {
+        return originId;
+    }
+
+    public void setOriginId(String originId) {
+        this.originId = originId;
+    }
+
+    public String getOriginProductNo() {
+        return originProductNo;
+    }
+
+    public void setOriginProductNo(String originProductNo) {
+        this.originProductNo = originProductNo;
+    }
+
+    public Boolean getIsSplitted() {
+        return isSplitted;
+    }
+
+    public void setIsSplitted(Boolean isSplitted) {
+        this.isSplitted = isSplitted;
+    }
+
+    public Boolean getIsDelivered() {
+        return isDelivered;
+    }
+
+    public void setIsDelivered(Boolean isDelivered) {
+        this.isDelivered = isDelivered;
+    }
+
+    public Date getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setDeliveryTime(Date deliveryTime) {
+        this.deliveryTime = deliveryTime;
+    }
+
+    public Integer getIsHandledByZJ() {
+        return isHandledByZJ;
+    }
+
+    public void setIsHandledByZJ(Integer isHandledByZJ) {
+        this.isHandledByZJ = isHandledByZJ;
+    }
+
+    public Date getHandleTime() {
+        return handleTime;
+    }
+
+    public void setHandleTime(Date handleTime) {
+        this.handleTime = handleTime;
+    }
+
+    public Boolean getIsPrinted() {
+        return isPrinted;
+    }
+
+    public void setIsPrinted(Boolean isPrinted) {
+        this.isPrinted = isPrinted;
+    }
+
+    public Integer getPrintedTimes() {
+        return printedTimes;
+    }
+
+    public void setPrintedTimes(Integer printedTimes) {
+        this.printedTimes = printedTimes;
+    }
+
+    public Date getLastPrintedTime() {
+        return lastPrintedTime;
+    }
+
+    public void setLastPrintedTime(Date lastPrintedTime) {
+        this.lastPrintedTime = lastPrintedTime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getCreateUserId() {
+        return createUserId;
+    }
+
+    public void setCreateUserId(String createUserId) {
+        this.createUserId = createUserId;
+    }
+
+    public String getCreateUserName() {
+        return createUserName;
+    }
+
+    public void setCreateUserName(String createUserName) {
+        this.createUserName = createUserName;
+    }
+
+    public Date getLastUpdateTime() {
+        return lastUpdateTime;
+    }
+
+    public void setLastUpdateTime(Date lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
+    }
+
+    public String getLastUpdateUserId() {
+        return lastUpdateUserId;
+    }
+
+    public void setLastUpdateUserId(String lastUpdateUserId) {
+        this.lastUpdateUserId = lastUpdateUserId;
+    }
+
+    public String getLastUpdateUserName() {
+        return lastUpdateUserName;
+    }
+
+    public void setLastUpdateUserName(String lastUpdateUserName) {
+        this.lastUpdateUserName = lastUpdateUserName;
+    }
+
+    public String getAttribute1() {
+        return attribute1;
+    }
+
+    public void setAttribute1(String attribute1) {
+        this.attribute1 = attribute1;
+    }
+
+    public String getAttribute2() {
+        return attribute2;
+    }
+
+    public void setAttribute2(String attribute2) {
+        this.attribute2 = attribute2;
+    }
+
+    public String getAttribute3() {
+        return attribute3;
+    }
+
+    public void setAttribute3(String attribute3) {
+        this.attribute3 = attribute3;
+    }
+
+    public String getAttribute4() {
+        return attribute4;
+    }
+
+    public void setAttribute4(String attribute4) {
+        this.attribute4 = attribute4;
+    }
+
+    public String getAttribute5() {
+        return attribute5;
+    }
+
+    public void setAttribute5(String attribute5) {
+        this.attribute5 = attribute5;
+    }
+
+    public String getAttribute6() {
+        return attribute6;
+    }
+
+    public void setAttribute6(String attribute6) {
+        this.attribute6 = attribute6;
+    }
+
+    public String getAttribute7() {
+        return attribute7;
+    }
+
+    public void setAttribute7(String attribute7) {
+        this.attribute7 = attribute7;
+    }
+
+    public String getAttribute8() {
+        return attribute8;
+    }
+
+    public void setAttribute8(String attribute8) {
+        this.attribute8 = attribute8;
+    }
+
+    public String getAttribute9() {
+        return attribute9;
+    }
+
+    public void setAttribute9(String attribute9) {
+        this.attribute9 = attribute9;
+    }
+
+    public String getAttribute10() {
+        return attribute10;
+    }
+
+    public void setAttribute10(String attribute10) {
+        this.attribute10 = attribute10;
+    }
+
+    public String getAttribute11() {
+        return attribute11;
+    }
+
+    public void setAttribute11(String attribute11) {
+        this.attribute11 = attribute11;
+    }
+
+    public String getAttribute12() {
+        return attribute12;
+    }
+
+    public void setAttribute12(String attribute12) {
+        this.attribute12 = attribute12;
+    }
+
+    public String getAttribute13() {
+        return attribute13;
+    }
+
+    public void setAttribute13(String attribute13) {
+        this.attribute13 = attribute13;
+    }
+
+    public String getAttribute14() {
+        return attribute14;
+    }
+
+    public void setAttribute14(String attribute14) {
+        this.attribute14 = attribute14;
+    }
+
+    public String getAttribute15() {
+        return attribute15;
+    }
+
+    public void setAttribute15(String attribute15) {
+        this.attribute15 = attribute15;
     }
 }
