@@ -145,6 +145,14 @@ public class SplitProductActivity extends ActionBarActivity {
                     mVProduct = g.fromJson(responseString, VProduct.class);
                     setProductView();
                 }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers,
+                                      Throwable throwable, JSONObject errorResponse) {
+                    progressDialog.dismiss();
+
+                    UIHelper.alert(getActivity(), "查找失败", throwable.getMessage());
+                }
             });
         }
 
@@ -232,6 +240,14 @@ public class SplitProductActivity extends ActionBarActivity {
                             UIHelper.alert(getActivity(), R.string.title_activity_split_product,
                                     "返回数据有误:"+e.getMessage());
                         }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers,
+                                          Throwable throwable, JSONObject errorResponse) {
+                        progressDialog.dismiss();
+                        Log.e(TAG, "保存失败", throwable);
+                        UIHelper.alert(getActivity(), "保存失败", throwable.getMessage());
                     }
                 });
             } catch (UnsupportedEncodingException e) {

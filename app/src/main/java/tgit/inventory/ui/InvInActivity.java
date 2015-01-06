@@ -109,7 +109,7 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
         }
         JSONObject jsonParams = new JSONObject();
         try {
-            final ProgressDialog progressDialog = ProgressDialog.show(this, "入库", "正在保存，请稍后", true);
+            final ProgressDialog progressDialog = ProgressDialog.show(this, "入库", "正在保存，请稍后", true, true);
             jsonParams.put("items_code", getItemsCode());
             jsonParams.put("inventory_code", getInvCode());
             Log.v(TAG, jsonParams.toString());

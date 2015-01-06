@@ -130,6 +130,14 @@ public class ProductListFragment extends ListFragment {
                     UIHelper.toastMessage(getActivity(), e.toString());
                 }
             }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers,
+                                  Throwable throwable, JSONObject errorResponse) {
+                progressDialog.dismiss();
+
+                UIHelper.alert(getActivity(), "查找失败", throwable.getMessage());
+            }
         });
     }
 }
