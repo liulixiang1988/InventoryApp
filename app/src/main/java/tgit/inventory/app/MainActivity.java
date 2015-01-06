@@ -6,11 +6,16 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.*;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.SimpleAdapter;
 import tgit.config.Config;
 import tgit.inventory.ui.*;
 import tgit.session.CurrentUser;
 import tgit.util.UIHelper;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -55,7 +60,6 @@ public class MainActivity extends ActionBarActivity {
         startActivity(i);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -86,7 +90,7 @@ public class MainActivity extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
+    public static class PlaceholderFragment extends Fragment{
 
 
         public PlaceholderFragment() {
@@ -96,36 +100,67 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-            Button btnInvIn = (Button) rootView.findViewById(R.id.btnInvIn);
-            Button btnInvOut = (Button) rootView.findViewById(R.id.btnInvOut);
-            Button btnInvSplit = (Button) rootView.findViewById(R.id.btnInvSplit);
-            btnInvIn.setOnClickListener(this);
-            btnInvOut.setOnClickListener(this);
-            btnInvSplit.setOnClickListener(this);
+            initialControl(rootView);
             return rootView;
         }
 
-        @Override
-        public void onClick(View v) {
-            int inv_type;
-            Intent i;
-            switch (v.getId()) {
-                case R.id.btnInvIn:
-                    inv_type = 0;
-                    i = new Intent(getActivity(), InvInActivity.class);
-                    i.putExtra(Config.INV_TYPE, inv_type);
-                    startActivity(i);
-                    break;
-                case R.id.btnInvOut:
-                    i = new Intent(getActivity(), InvOutActivity.class);
-                    startActivity(i);
-                    break;
-                case R.id.btnInvSplit:
-                    i = new Intent(getActivity(), SplitActivity.class);
-                    startActivity(i);
-                    break;
+        private void initialControl(View v){
+            GridView gridview = (GridView) v.findViewById(R.id.GridView);
+            ArrayList<HashMap<String, Object>> menuList = new ArrayList<HashMap<String, Object>>();
+            for(int i = 0;i < 3;i++)
+            {
+                HashMap<String, Object> map = new HashMap<String, Object>();
+                switch (i){
+                    case 0:
+                        map.put("ItemImage", R.drawable.inv_in);
+                        map.put("ItemText", "入库");
+                        break;
+                    case 1:
+                        map.put("ItemImage", R.drawable.inv_out);
+                        map.put("ItemText", "出库");
+                        break;
+                    case 2:
+                        map.put("ItemImage", R.drawable.split);
+                        map.put("ItemText", "拆分");
+                        break;
+                }
+                menuList.add(map);
             }
+            SimpleAdapter saItem = new SimpleAdapter(getActivity(),
+                    menuList, //数据源
+                    R.layout.dashboard_button_layout, //xml实现
+                    new String[]{"ItemImage","ItemText"}, //对应map的Key
+                    new int[]{R.id.ItemImage,R.id.ItemText});  //对应R的Id
+
+            //添加Item到网格中
+            gridview.setAdapter(saItem);
+            //添加点击事件
+            gridview.setOnItemClickListener(
+                    new AdapterView.OnItemClickListener()
+                    {
+                        public void onItemClick(AdapterView<?> parent, View arg1, int position,long id)
+                        {
+                            int inv_type;
+                            Intent i;
+                            switch (position) {
+                                case 0:
+                                    inv_type = 0;
+                                    i = new Intent(getActivity(), InvInActivity.class);
+                                    i.putExtra(Config.INV_TYPE, inv_type);
+                                    startActivity(i);
+                                    break;
+                                case 1:
+                                    i = new Intent(getActivity(), InvOutActivity.class);
+                                    startActivity(i);
+                                    break;
+                                case 2:
+                                    i = new Intent(getActivity(), SplitActivity.class);
+                                    startActivity(i);
+                                    break;
+                            }
+                        }
+                    }
+            );
         }
     }
 }
