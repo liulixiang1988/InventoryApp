@@ -41,5 +41,7 @@
     <string name="inlocator_label">货位</string>
     <string name="weight_label">重量</string>
     <string name="btn_print_label">打印</string>
+    <string name="title_activity_inv_out_delivery_list">出库码单明细</string>
+    <string name="menu_action_save_button_label">保存</string>
 
 </resources>

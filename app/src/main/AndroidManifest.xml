@@ -72,6 +72,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tgit.inventory.ui.SplitProductsActivity" />
         </activity>
+        <activity
+            android:name="tgit.inventory.ui.InvOutDeliveryListActivity"
+            android:label="@string/title_activity_inv_out_delivery_list"
+            android:parentActivityName="tgit.inventory.ui.InvOutActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tgit.inventory.ui.InvOutActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package tgit.inventory.ui;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -91,7 +92,8 @@ public class InvOutActivity extends ActionBarActivity implements View.OnClickLis
                         UIHelper.toastMessage(InvOutActivity.this, msg);
                         int resultCode = response.getInt("status");
                         if (resultCode == 1) {
-                            clearText();
+                            Intent i = new Intent(InvOutActivity.this, InvOutDeliveryListActivity.class);
+                            startActivity(i);
                         }
                     } catch (JSONException e) {
                         Log.e(TAG, "A发生错误：" + e.toString());

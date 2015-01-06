@@ -1,15 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context=".MainActivity">
+      tools:context="tgit.inventory.ui.InvOutDeliveryListActivity">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/action_logout"
-        android:orderInCategory="0"
-        android:title="@string/logout"
+        android:id="@+id/action_save"
+        android:orderInCategory="1"
+        android:title="@string/menu_action_save_button_label"
         app:showAsAction="ifRoom"/>
 </menu>
