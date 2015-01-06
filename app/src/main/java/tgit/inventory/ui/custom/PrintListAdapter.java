@@ -65,7 +65,7 @@ public class PrintListAdapter extends BaseAdapter {
         } else {
             item = (ViewHolder)convertView.getTag();
         }
-        item.txtProductNo.setText("产品编号:"+mProducts.get(position).getProductNo());
+        item.txtProductNo.setText("编号:"+mProducts.get(position).getProductNo());
         item.txtInLocator.setText("货位:"+mProducts.get(position).getInLocator());
         item.txtWeight.setText(mProducts.get(position).getSuttle());
         item.btnPrint.setOnClickListener(new View.OnClickListener() {
