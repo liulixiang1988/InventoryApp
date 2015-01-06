@@ -37,5 +37,9 @@
     <string name="title_unsplitted">未拆包</string>
     <string name="title_splitted">已拆包</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="productno_label">产品编号</string>
+    <string name="inlocator_label">货位</string>
+    <string name="weight_label">重量</string>
+    <string name="btn_print_label">打印</string>
 
 </resources>
