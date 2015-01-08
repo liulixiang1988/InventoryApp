@@ -43,5 +43,7 @@
     <string name="btn_print_label">打印</string>
     <string name="title_activity_inv_out_delivery_list">出库码单明细</string>
     <string name="menu_action_save_button_label">保存</string>
+    <string name="btnAdd">添加</string>
+    <string name="btn_delete">删除</string>
 
 </resources>

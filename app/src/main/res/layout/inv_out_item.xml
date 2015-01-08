@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:minHeight="?android:attr/listPreferredItemHeight"
+              android:orientation="horizontal">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="3">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/productno_label"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:id="@+id/txtProductNo"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/inlocator_label"
+            android:textSize="16sp"
+            android:id="@+id/txtInLocator"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="@string/weight_label"
+        android:textSize="24sp"
+        android:layout_weight="1"
+        android:minWidth="50dp"
+        android:id="@+id/txtWeight"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_delete"
+        android:focusable="false"
+        android:minWidth="70dp"
+        android:id="@+id/btnDelete"/>
+</LinearLayout>
