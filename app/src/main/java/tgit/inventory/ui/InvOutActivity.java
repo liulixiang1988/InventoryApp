@@ -1,6 +1,7 @@
 package tgit.inventory.ui;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -32,7 +33,11 @@ public class InvOutActivity extends ActionBarActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inv_out);
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_SHOW_TITLE);
+        actionBar.setIcon(R.drawable.ic_launcher);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
         Button btnSave = (Button) findViewById(R.id.btnSave);
         edtDeliveryNumber = (EditText) findViewById(R.id.edtDeliveryNumber);
 

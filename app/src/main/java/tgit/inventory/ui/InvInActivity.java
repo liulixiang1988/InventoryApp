@@ -2,6 +2,7 @@ package tgit.inventory.ui;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -34,7 +35,11 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inv_in);
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_SHOW_TITLE);
+        actionBar.setIcon(R.drawable.ic_launcher);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
         Button btnAddItem = (Button) findViewById(R.id.btnAddItem);
         Button btnSend = (Button) findViewById(R.id.btnSend);
         Button btnClear = (Button) findViewById(R.id.btnClear);

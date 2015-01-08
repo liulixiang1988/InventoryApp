@@ -42,7 +42,10 @@ public class SplitProductsActivity extends ActionBarActivity implements ActionBa
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_SHOW_TITLE);
+        actionBar.setIcon(R.drawable.ic_launcher);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSplitProductsSectionsPagerAdapter = new SplitProductsSectionsPagerAdapter(this, getSupportFragmentManager());
