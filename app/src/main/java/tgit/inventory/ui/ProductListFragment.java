@@ -87,7 +87,7 @@ public class ProductListFragment extends ListFragment {
 
     private void loadData(String itemCode){
         final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "数据加载",
-                "正在加载数据，请稍后", true);
+                "正在加载数据，请稍后", true, true);
         mVProducts.clear();
         RestClient.get(Config.getItemsURL(itemCode), null, new JsonHttpResponseHandler() {
             @Override
