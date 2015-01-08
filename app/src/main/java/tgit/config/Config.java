@@ -60,4 +60,8 @@ public class Config {
     public static String getSplitURL(String itemId){return "product/split/"+itemId;}
 
     public static String getPrintURL(String itemId){return "product/print/"+itemId;}
+
+    public static String getInvOutRemove(String itemId){return "inv/out_remove/"+itemId;}
+
+    public static String getInvOutDelivery(String deliveryNumber){return "inv/delivery/"+deliveryNumber;}
 }

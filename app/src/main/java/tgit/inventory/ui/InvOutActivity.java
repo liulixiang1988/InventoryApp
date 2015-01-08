@@ -17,6 +17,7 @@ import org.apache.http.entity.StringEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tgit.config.Config;
+import tgit.config.Constants;
 import tgit.inventory.app.R;
 import tgit.net.RestClient;
 import tgit.util.UIHelper;
@@ -98,6 +99,7 @@ public class InvOutActivity extends ActionBarActivity implements View.OnClickLis
                         int resultCode = response.getInt("status");
                         if (resultCode == 1) {
                             Intent i = new Intent(InvOutActivity.this, InvOutDeliveryListActivity.class);
+                            i.putExtra(Constants.DELIVERY_NUMBER, getDeliveryNumber());
                             startActivity(i);
                         }
                     } catch (JSONException e) {

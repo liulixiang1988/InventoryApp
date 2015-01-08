@@ -37,11 +37,11 @@
             android:name="tgit.inventory.ui.InvInActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_inv_in"
-            android:screenOrientation="portrait"
-            android:parentActivityName="tgit.inventory.app.MainActivity">
+            android:parentActivityName="tgit.inventory.app.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="tgit.inventory.app.MainActivity"/>
+                android:value="tgit.inventory.app.MainActivity" />
         </activity>
         <activity
             android:name="tgit.inventory.ui.IPConfigActivity"
@@ -54,29 +54,29 @@
             android:name="tgit.inventory.ui.InvOutActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_inv_out"
-            android:screenOrientation="portrait"
-            android:parentActivityName="tgit.inventory.app.MainActivity">
+            android:parentActivityName="tgit.inventory.app.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="tgit.inventory.app.MainActivity"/>
+                android:value="tgit.inventory.app.MainActivity" />
         </activity>
         <activity
             android:name="tgit.inventory.ui.SplitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_split"
-            android:screenOrientation="portrait"
-            android:parentActivityName="tgit.inventory.app.MainActivity">
+            android:parentActivityName="tgit.inventory.app.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="tgit.inventory.app.MainActivity"/>
+                android:value="tgit.inventory.app.MainActivity" />
         </activity>
         <activity
             android:name="tgit.inventory.ui.SplitProductsActivity"
             android:label="@string/title_activity_split_products"
-            android:parentActivityName="tgit.inventory.ui.SplitActivity">
+            android:parentActivityName="tgit.inventory.ui.SplitActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="tgit.inventory.ui.SplitActivity"/>
+                android:value="tgit.inventory.ui.SplitActivity" />
         </activity>
         <activity
             android:name="tgit.inventory.ui.SplitProductActivity"
@@ -95,6 +95,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tgit.inventory.ui.InvOutActivity" />
+        </activity>
+        <activity
+            android:name="tgit.inventory.ui.InvOutItemSelectActivity"
+            android:label="@string/title_activity_inv_out_item_select"
+            android:parentActivityName="tgit.inventory.ui.InvOutDeliveryListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tgit.inventory.ui.InvOutDeliveryListActivity" />
         </activity>
     </application>
 

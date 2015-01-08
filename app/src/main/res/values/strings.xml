@@ -45,5 +45,6 @@
     <string name="menu_action_save_button_label">保存</string>
     <string name="btnAdd">添加</string>
     <string name="btn_delete">删除</string>
+    <string name="title_activity_inv_out_item_select">产品选择</string>
 
 </resources>
