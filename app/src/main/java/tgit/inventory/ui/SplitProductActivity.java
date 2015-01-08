@@ -82,7 +82,7 @@ public class SplitProductActivity extends ActionBarActivity {
         private TextView txtProductName, txtInLocator, txtProductNo, txtInLocatorId,
                 txtModel,txtSpecification, txtTemp, txtBatchNumber, txtProductDate, txtSuttle,
                 txtLeftWeight;
-        private EditText edtSplitWeight;
+        private EditText edtSplitWeight, edtSplitGross, edtLeftGross;
         private Button btnOk;
         public PlaceholderFragment() {
         }
@@ -125,6 +125,8 @@ public class SplitProductActivity extends ActionBarActivity {
             InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(edtSplitWeight.getWindowToken(), 0);
 
+            edtSplitGross = (EditText) v.findViewById(R.id.edtSplitGross);
+            edtLeftGross = (EditText) v.findViewById(R.id.edtLeftGross);
 
             btnOk = (Button) v.findViewById(R.id.btnOk);
             btnOk.setOnClickListener(this);
@@ -180,10 +182,14 @@ public class SplitProductActivity extends ActionBarActivity {
         @Override
         public void onClick(View v) {
             String splitWeightStr = edtSplitWeight.getText().toString().trim();
-            if (mVProduct == null || splitWeightStr.isEmpty()){
+            String splitGrossStr = edtSplitGross.getText().toString().trim();
+            String leftGrossStr = edtLeftGross.getText().toString().trim();
+
+            if (mVProduct == null || splitWeightStr.isEmpty()
+                    || splitGrossStr.isEmpty() || leftGrossStr.isEmpty()){
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle(R.string.title_activity_split_product)
-                        .setMessage("当前没有对应的记录，或者没有输入拆包重量")
+                        .setMessage("当前没有对应的记录，或者没有输入拆包重量、拆包毛重、剩余毛重")
                         .setPositiveButton(android.R.string.ok, null);
                 AlertDialog alert = builder.create();
                 alert.show();
@@ -202,15 +208,18 @@ public class SplitProductActivity extends ActionBarActivity {
                 return;
             }
 
-            keepSplit(mVProduct.getId(), mLeftWeight, splitWeightStr);
+            keepSplit(mVProduct.getId(), mLeftWeight, splitWeightStr, splitGrossStr, leftGrossStr);
         }
 
-        private void keepSplit(String productId, String leftWeight, String splitWeight){
+        private void keepSplit(String productId, String leftWeight, String splitWeight, String splitGross,
+                               String leftGross){
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("id", productId);
                 jsonObject.put("WeightLeft", leftWeight);
                 jsonObject.put("WeightDelivery", splitWeight);
+                jsonObject.put("GrossDelivery", splitGross);
+                jsonObject.put("GrossLeft", leftGross);
             } catch (JSONException e) {
                 Log.e(TAG, "拆分出错", e);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
