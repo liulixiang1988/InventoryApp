@@ -110,6 +110,7 @@ public class InvOutDeliveryListActivity extends ActionBarActivity {
         public void onResume() {
             super.onResume();
             Log.v(TAG, "加载数据："+Config.CurrentDeliveryNumber);
+            getActivity().setTitle("码单："+Config.CurrentDeliveryNumber);
             loadData(Config.CurrentDeliveryNumber);
         }
 
