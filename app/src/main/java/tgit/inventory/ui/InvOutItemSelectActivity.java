@@ -148,8 +148,6 @@ public class InvOutItemSelectActivity extends ActionBarActivity {
 
                     try {
                         int length = response.length();
-                        ArrayList<HashMap<String, String>> products =
-                                new ArrayList<HashMap<String, String>>();
 
                         Gson g = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
                         for (int i = 0; i < length; i++) {
