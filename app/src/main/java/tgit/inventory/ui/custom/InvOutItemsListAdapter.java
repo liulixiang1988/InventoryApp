@@ -1,7 +1,8 @@
 package tgit.inventory.ui.custom;
 
-import android.app.ProgressDialog;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +13,10 @@ import android.widget.TextView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import org.apache.http.Header;
 import org.json.JSONObject;
+import tgit.Infrastucture.IListDataSource;
 import tgit.config.Config;
 import tgit.inventory.app.R;
-import tgit.model.Product;
+import tgit.model.DeliveryDetail;
 import tgit.net.RestClient;
 
 import java.util.List;
@@ -25,22 +27,27 @@ import java.util.List;
  */
 public class InvOutItemsListAdapter extends BaseAdapter {
     public static final String TAG = InvOutItemsListAdapter.class.getSimpleName();
-    private List<Product> mProducts = null;
+    private List<DeliveryDetail> mDetails = null;
     private Context mContext = null;
+    private IListDataSource mDataSource = null;
 
-    public InvOutItemsListAdapter(Context context, List<Product> products){
+    public InvOutItemsListAdapter(Context context, List<DeliveryDetail> products){
         mContext = context;
-        mProducts = products;
+        mDetails = products;
+    }
+
+    public void setDataSource(IListDataSource dataSource){
+        mDataSource = dataSource;
     }
 
     @Override
     public int getCount() {
-        return mProducts.size();
+        return mDetails.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mProducts.get(position);
+        return mDetails.get(position);
     }
 
     @Override
@@ -63,30 +70,39 @@ public class InvOutItemsListAdapter extends BaseAdapter {
             item = (ViewHolder)convertView.getTag();
         }
 
-        item.txtProductNo.setText("编号:"+mProducts.get(position).getProductNo());
-        item.txtInLocator.setText("货位:"+mProducts.get(position).getInLocator());
-        item.txtWeight.setText(mProducts.get(position).getSuttle());
+        item.txtProductNo.setText("编号:" + mDetails.get(position).getProductNo());
+        item.txtInLocator.setText("货位:"+ mDetails.get(position).getInLocator());
+        item.txtWeight.setText(mDetails.get(position).getSuttle());
         item.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.v(TAG, "Delete Button is pressed");
-                String id = mProducts.get(position).getId();
-                deleteItem(id);
-                notifyDataSetChanged();
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setTitle("确认删除")
+                        .setMessage("确认删除当前项？\n")
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                int id = mDetails.get(position).getId();
+                                deleteItem(id);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.cancel, null);
+                builder.create().show();
             }
         });
 
         return convertView;
     }
 
-    private void deleteItem(String id){
+    private void deleteItem(int id){
         Log.v(TAG, "delete item"+id);
         RestClient.post(Config.getInvOutRemove(id), null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
                 Log.v(TAG, "delete item result:"+response.toString());
-
+                if (mDataSource != null) mDataSource.refreshDataSource();
             }
 
             @Override

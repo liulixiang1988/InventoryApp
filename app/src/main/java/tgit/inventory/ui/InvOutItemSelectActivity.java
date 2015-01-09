@@ -33,7 +33,6 @@ import tgit.util.UIHelper;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class InvOutItemSelectActivity extends ActionBarActivity {
@@ -83,8 +82,6 @@ public class InvOutItemSelectActivity extends ActionBarActivity {
     public static class InvOutProductSelectFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
         public static final String TAG = InvOutProductSelectFragment.class.getSimpleName();
         private List<VProduct> mVProducts = new ArrayList<VProduct>();
-        public static final String KEY_PRODUCT = "KEY_PRODUCT";
-        public static final String KEY_INLOCATOR = "KEY_INLOCATOR";
 
         private String mDeliveryNumber;
         private TextView txtProductNo;

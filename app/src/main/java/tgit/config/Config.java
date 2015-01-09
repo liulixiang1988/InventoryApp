@@ -23,6 +23,8 @@ public class Config {
 
     public static final String USER_INFO = "/userinfo/";
 
+    public static String CurrentDeliveryNumber = "";
+
     /**
      * 获取Preference设置
      */
@@ -62,7 +64,7 @@ public class Config {
 
     public static String getPrintURL(String itemId){return "product/print/"+itemId;}
 
-    public static String getInvOutRemove(String itemId){return "inv/out_remove/"+itemId;}
+    public static String getInvOutRemove(int itemId){return "inventory/deleteDelivery/"+itemId;}
 
-    public static String getInvOutDelivery(String deliveryNumber){return "inv/delivery/"+deliveryNumber;}
+    public static String getInvOutDeliveryDetails(String deliveryNumber){return "inventory/delivery/"+deliveryNumber;}
 }

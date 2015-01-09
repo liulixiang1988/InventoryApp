@@ -98,8 +98,8 @@ public class InvOutActivity extends ActionBarActivity implements View.OnClickLis
                         UIHelper.toastMessage(InvOutActivity.this, msg);
                         int resultCode = response.getInt("status");
                         if (resultCode == 1) {
+                            Config.CurrentDeliveryNumber = getDeliveryNumber();
                             Intent i = new Intent(InvOutActivity.this, InvOutDeliveryListActivity.class);
-                            i.putExtra(Constants.DELIVERY_NUMBER, getDeliveryNumber());
                             startActivity(i);
                         }
                     } catch (JSONException e) {

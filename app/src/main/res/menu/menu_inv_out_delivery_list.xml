@@ -11,5 +11,5 @@
         android:id="@+id/action_save"
         android:orderInCategory="1"
         android:title="@string/menu_action_save_button_label"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never"/>
 </menu>
