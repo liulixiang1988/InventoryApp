@@ -3,6 +3,7 @@ package tgit.inventory.ui;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
@@ -181,9 +182,9 @@ public class SplitProductActivity extends ActionBarActivity {
 
         @Override
         public void onClick(View v) {
-            String splitWeightStr = edtSplitWeight.getText().toString().trim();
-            String splitGrossStr = edtSplitGross.getText().toString().trim();
-            String leftGrossStr = edtLeftGross.getText().toString().trim();
+            final String splitWeightStr = edtSplitWeight.getText().toString().trim();
+            final String splitGrossStr = edtSplitGross.getText().toString().trim();
+            final String leftGrossStr = edtLeftGross.getText().toString().trim();
 
             if (mVProduct == null || splitWeightStr.isEmpty()
                     || splitGrossStr.isEmpty() || leftGrossStr.isEmpty()){
@@ -208,7 +209,17 @@ public class SplitProductActivity extends ActionBarActivity {
                 return;
             }
 
-            keepSplit(mVProduct.getId(), mLeftWeight, splitWeightStr, splitGrossStr, leftGrossStr);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("拆包确认")
+                    .setMessage("确认对当前选择拆包吗？")
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            keepSplit(mVProduct.getId(), mLeftWeight, splitWeightStr, splitGrossStr, leftGrossStr);
+                        }
+                    })
+                    .setNegativeButton(android.R.string.cancel, null);
+            builder.create().show();
         }
 
         private void keepSplit(String productId, String leftWeight, String splitWeight, String splitGross,
