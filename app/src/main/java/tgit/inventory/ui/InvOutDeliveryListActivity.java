@@ -132,6 +132,7 @@ public class InvOutDeliveryListActivity extends ActionBarActivity {
 
         private void btnAddClicked(){
             Intent i = new Intent(getActivity(), InvOutItemSelectActivity.class);
+            i.putExtra(Constants.DELIVERY_NUMBER, mDeliveryNumber);
             startActivityForResult(i, ADD_BTN_REQUEST_CODE);
         }
     }
