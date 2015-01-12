@@ -83,7 +83,7 @@ public class SplitProductActivity extends ActionBarActivity {
         private TextView txtProductName, txtInLocator, txtProductNo, txtInLocatorId,
                 txtModel,txtSpecification, txtTemp, txtBatchNumber, txtProductDate, txtSuttle,
                 txtLeftWeight;
-        private EditText edtSplitWeight, edtSplitGross, edtLeftGross;
+        private EditText edtSplitWeight, edtSplitGross;
         private Button btnOk;
         public PlaceholderFragment() {
         }
@@ -127,7 +127,6 @@ public class SplitProductActivity extends ActionBarActivity {
             imm.hideSoftInputFromWindow(edtSplitWeight.getWindowToken(), 0);
 
             edtSplitGross = (EditText) v.findViewById(R.id.edtSplitGross);
-            edtLeftGross = (EditText) v.findViewById(R.id.edtLeftGross);
 
             btnOk = (Button) v.findViewById(R.id.btnOk);
             btnOk.setOnClickListener(this);
@@ -184,7 +183,7 @@ public class SplitProductActivity extends ActionBarActivity {
         public void onClick(View v) {
             final String splitWeightStr = edtSplitWeight.getText().toString().trim();
             final String splitGrossStr = edtSplitGross.getText().toString().trim();
-            final String leftGrossStr = edtLeftGross.getText().toString().trim();
+            final String leftGrossStr = "0";
 
             if (mVProduct == null || splitWeightStr.isEmpty()
                     || splitGrossStr.isEmpty() || leftGrossStr.isEmpty()){
