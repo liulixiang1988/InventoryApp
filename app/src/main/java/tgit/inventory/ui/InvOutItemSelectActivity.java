@@ -143,6 +143,7 @@ public class InvOutItemSelectActivity extends ActionBarActivity {
 
                     progressDialog.dismiss();
 
+                    txtProductNo.setText("");
                     try {
                         int length = response.length();
 

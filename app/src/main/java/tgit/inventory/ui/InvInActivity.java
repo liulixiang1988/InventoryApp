@@ -100,7 +100,7 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
 
     //添加物料
     private void btnAddItem_onClick(){
-        txtItemCodes.append(getItemCode()+";");
+        txtItemCodes.append(getItemCode()+"\n");
         edtItemCode.setText("");
         edtItemCode.requestFocus();
     }
@@ -188,7 +188,7 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
     }
 
     public String getItemsCode(){
-        return txtItemCodes.getText().toString();
+        return txtItemCodes.getText().toString().replace('\n', ';');
     }
 
 }
