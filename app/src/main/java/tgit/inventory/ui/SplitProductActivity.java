@@ -83,7 +83,7 @@ public class SplitProductActivity extends ActionBarActivity {
         private TextView txtProductName, txtInLocator, txtProductNo, txtInLocatorId,
                 txtModel,txtSpecification, txtTemp, txtBatchNumber, txtProductDate, txtSuttle,
                 txtLeftWeight;
-        private EditText edtSplitWeight, edtSplitGross;
+        private EditText edtSplitWeight, edtSplitGross, edtModel;
         private Button btnOk;
         public PlaceholderFragment() {
         }
@@ -127,6 +127,7 @@ public class SplitProductActivity extends ActionBarActivity {
             imm.hideSoftInputFromWindow(edtSplitWeight.getWindowToken(), 0);
 
             edtSplitGross = (EditText) v.findViewById(R.id.edtSplitGross);
+            edtModel = (EditText) v.findViewById(R.id.edtModel);
 
             btnOk = (Button) v.findViewById(R.id.btnOk);
             btnOk.setOnClickListener(this);
@@ -177,6 +178,7 @@ public class SplitProductActivity extends ActionBarActivity {
             txtBatchNumber.append(mVProduct.getBatchNumber());
             txtProductDate.append(mVProduct.getProductDate());
             txtSuttle.append(mVProduct.getSuttle());
+            edtModel.setText(mVProduct.getModel());
         }
 
         @Override
@@ -184,6 +186,7 @@ public class SplitProductActivity extends ActionBarActivity {
             final String splitWeightStr = edtSplitWeight.getText().toString().trim();
             final String splitGrossStr = edtSplitGross.getText().toString().trim();
             final String leftGrossStr = "0";
+            final String model = edtModel.getText().toString().trim();
 
             if (mVProduct == null || splitWeightStr.isEmpty()
                     || splitGrossStr.isEmpty() || leftGrossStr.isEmpty()){
@@ -214,7 +217,7 @@ public class SplitProductActivity extends ActionBarActivity {
                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            keepSplit(mVProduct.getId(), mLeftWeight, splitWeightStr, splitGrossStr, leftGrossStr);
+                            keepSplit(mVProduct.getId(), mLeftWeight, splitWeightStr, splitGrossStr, leftGrossStr, model);
                         }
                     })
                     .setNegativeButton(android.R.string.cancel, null);
@@ -222,7 +225,7 @@ public class SplitProductActivity extends ActionBarActivity {
         }
 
         private void keepSplit(String productId, String leftWeight, String splitWeight, String splitGross,
-                               String leftGross){
+                               String leftGross, String model){
             JSONObject jsonObject = new JSONObject();
             try {
                 jsonObject.put("id", productId);
@@ -230,6 +233,7 @@ public class SplitProductActivity extends ActionBarActivity {
                 jsonObject.put("WeightDelivery", splitWeight);
                 jsonObject.put("GrossDelivery", splitGross);
                 jsonObject.put("GrossLeft", leftGross);
+                jsonObject.put("Model", model);
             } catch (JSONException e) {
                 Log.e(TAG, "拆分出错", e);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

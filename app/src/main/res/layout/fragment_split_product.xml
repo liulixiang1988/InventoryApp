@@ -100,6 +100,15 @@
         android:singleLine="true"
         android:textSize="24sp"/>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtModel"
+        android:hint="牌号"
+        android:singleLine="true"
+        android:textSize="24sp"
+        />
+
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
