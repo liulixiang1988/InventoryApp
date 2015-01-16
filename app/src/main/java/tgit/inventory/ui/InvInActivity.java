@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -45,7 +46,9 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
         Button btnClear = (Button) findViewById(R.id.btnClear);
 
         edtItemCode = (EditText) findViewById(R.id.edtItemCode);
+        edtItemCode.setInputType(InputType.TYPE_NULL);
         edtInvCode = (EditText) findViewById(R.id.edtInvCode);
+        edtInvCode.setInputType(InputType.TYPE_NULL);
 
         txtItemCodes = (TextView) findViewById(R.id.txtItemCodes);
 
@@ -57,6 +60,7 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
             public void onClick(View v) {
                 //清空
                 txtItemCodes.setText("");
+                edtInvCode.setText("");
             }
         });
     }
