@@ -128,6 +128,13 @@ public class SplitProductActivity extends ActionBarActivity {
 
             edtSplitGross = (EditText) v.findViewById(R.id.edtSplitGross);
             edtModel = (EditText) v.findViewById(R.id.edtModel);
+            edtModel.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) return;
+                    edtModel.setSelection(edtModel.getText().length());
+                }
+            });
 
             btnOk = (Button) v.findViewById(R.id.btnOk);
             btnOk.setOnClickListener(this);
