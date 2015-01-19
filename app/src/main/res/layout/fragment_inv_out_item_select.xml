@@ -12,6 +12,11 @@
     android:paddingBottom="10dp"
     android:id="@+id/linear_layout"
     android:orientation="horizontal">
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="清空"/>
     <EditText
         android:id="@+id/txtProductNo"
         android:layout_width="wrap_content"

@@ -85,7 +85,7 @@ public class InvOutItemSelectActivity extends ActionBarActivity {
 
         private String mDeliveryNumber;
         private TextView txtProductNo;
-        private Button btnSearch;
+        private Button btnSearch, btnClear;
         private ListView listView;
 
         public InvOutProductSelectFragment() {
@@ -106,11 +106,14 @@ public class InvOutItemSelectActivity extends ActionBarActivity {
             Log.v(TAG, "DeliveryNumber:"+mDeliveryNumber);
             txtProductNo = (TextView) rootView.findViewById(R.id.txtProductNo);
             btnSearch = (Button) rootView.findViewById(R.id.btnSearch);
+            btnClear = (Button) rootView.findViewById(R.id.btnClear);
+
             listView = (ListView) rootView.findViewById(R.id.listView);
             listView.setOnItemClickListener(this);
 
             listView.setEmptyView(rootView.findViewById(android.R.id.empty));
             btnSearch.setOnClickListener(this);
+            btnClear.setOnClickListener(this);
         }
 
         @Override
@@ -119,6 +122,9 @@ public class InvOutItemSelectActivity extends ActionBarActivity {
             switch (id){
                 case R.id.btnSearch:
                     btnSearchOnClick();
+                    break;
+                case R.id.btnClear:
+                    txtProductNo.setText("");
                     break;
             }
         }
@@ -143,7 +149,6 @@ public class InvOutItemSelectActivity extends ActionBarActivity {
 
                     progressDialog.dismiss();
 
-                    txtProductNo.setText("");
                     try {
                         int length = response.length();
 
