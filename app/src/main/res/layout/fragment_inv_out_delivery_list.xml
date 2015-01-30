@@ -32,6 +32,8 @@
             android:gravity="center"
             android:minWidth="70dp"
             android:id="@+id/btnAdd"
+            android:background="@drawable/button_custom"
+            android:textColor="@android:color/white"
             android:layout_gravity="end"/>
     </FrameLayout>
     <ListView

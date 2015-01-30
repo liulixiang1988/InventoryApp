@@ -41,6 +41,8 @@
         android:text="@string/btn_print_label"
         android:focusable="false"
         android:minWidth="70dp"
+        android:background="@drawable/button_custom"
+        android:textColor="@android:color/white"
         android:id="@+id/btnPrint"/>
 
 

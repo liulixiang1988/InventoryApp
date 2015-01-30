@@ -24,12 +24,14 @@
 
     <Button
         android:id="@+id/btnSave"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edtDeliveryNumber"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
         android:textSize="25sp"
-        android:text="@string/btn_allocate" />
+        android:text="@string/btn_allocate"
+        android:background="@drawable/button_custom"
+        android:textColor="@android:color/white"/>
 
 </RelativeLayout>

@@ -16,6 +16,8 @@
         android:id="@+id/btnClear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_custom"
+        android:textColor="@android:color/white"
         android:text="清空"/>
     <EditText
         android:id="@+id/txtProductNo"
@@ -29,6 +31,8 @@
         android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_custom"
+        android:textColor="@android:color/white"
         android:text="搜索"/>
 </LinearLayout>
 <ListView

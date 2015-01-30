@@ -19,13 +19,15 @@
         android:layout_centerHorizontal="true"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/inv_in_add_item_btn"
         android:id="@+id/btnAddItem"
         android:textSize="25sp"
         android:layout_below="@+id/edtItemCode"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+            android:background="@drawable/button_custom"
+            android:textColor="@android:color/white"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -38,13 +40,15 @@
         android:layout_centerHorizontal="true"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_save"
         android:id="@+id/btnSend"
         android:textSize="25sp"
         android:layout_below="@+id/edtInvCode"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_custom"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -56,12 +60,14 @@
         android:layout_centerHorizontal="true"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_clear"
         android:id="@+id/btnClear"
         android:layout_below="@+id/txtItemCodes"
         android:textSize="25sp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_delete"
+        android:textColor="@android:color/white"/>
 
 </RelativeLayout>

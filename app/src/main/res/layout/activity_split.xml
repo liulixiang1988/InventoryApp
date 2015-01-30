@@ -29,6 +29,8 @@
         android:textSize="24sp"
         android:layout_below="@+id/edtItemCode"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/button_custom"
+        android:textColor="@android:color/white"
         android:layout_marginTop="46dp"/>
 
     <Button
@@ -39,5 +41,7 @@
         android:textSize="24sp"
         android:layout_below="@+id/btnSearch"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/button_custom"
+        android:textColor="@android:color/white"
         android:layout_marginTop="44dp"/>
 </RelativeLayout>

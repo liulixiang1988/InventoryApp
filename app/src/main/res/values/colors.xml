@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_grey">#F4F5F0</color>
+    <color name="light_green_text">#6cb947</color>
+    <color name="light_green_button">#6cb947</color>
+    <color name="pressed_green_button">#ba9dda</color>
+    <color name="focused_green_button">#6cb947</color>
+    <color name="light_red_button">#D9534F</color>
+    <color name="pressed_red_button">#F0AD4E</color>
+    <color name="focused_red_button">#D9534F</color>
+</resources>

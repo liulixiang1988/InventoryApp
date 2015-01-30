@@ -114,6 +114,8 @@
         android:layout_height="wrap_content"
         android:text="拆分"
         android:textSize="24sp"
+        android:background="@drawable/button_custom"
+        android:textColor="@android:color/white"
         android:id="@+id/btnOk"/>
 </LinearLayout>
 
