@@ -7,17 +7,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.*;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridView;
-import android.widget.SimpleAdapter;
 import tgit.config.Config;
 import tgit.inventory.ui.*;
 import tgit.session.CurrentUser;
 import tgit.util.UIHelper;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 
 public class MainActivity extends ActionBarActivity {
