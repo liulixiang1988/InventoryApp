@@ -2,18 +2,12 @@ package tgit.inventory.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
-
+import android.view.*;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,11 +24,7 @@ import tgit.config.Config;
 import tgit.config.Constants;
 import tgit.inventory.app.R;
 import tgit.inventory.ui.custom.InvOutItemsListAdapter;
-import tgit.inventory.ui.custom.InvOutSelectItemListAdapter;
-import tgit.inventory.ui.custom.PrintListAdapter;
 import tgit.model.DeliveryDetail;
-import tgit.model.Product;
-import tgit.model.VProduct;
 import tgit.net.RestClient;
 import tgit.util.UIHelper;
 
@@ -49,7 +39,6 @@ public class InvOutDeliveryListActivity extends ActionBarActivity {
         setContentView(R.layout.activity_inv_out_delivery_list);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_SHOW_TITLE);
-        actionBar.setIcon(R.drawable.ic_launcher);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
         if (savedInstanceState == null) {

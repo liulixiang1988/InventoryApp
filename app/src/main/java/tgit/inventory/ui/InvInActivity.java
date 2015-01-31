@@ -38,7 +38,6 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
         setContentView(R.layout.activity_inv_in);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_SHOW_TITLE);
-        actionBar.setIcon(R.drawable.ic_launcher);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
         Button btnAddItem = (Button) findViewById(R.id.btnAddItem);

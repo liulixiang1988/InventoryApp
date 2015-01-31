@@ -22,7 +22,6 @@ public class SplitActivity extends ActionBarActivity implements View.OnClickList
         setContentView(R.layout.activity_split);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_SHOW_TITLE);
-        actionBar.setIcon(R.drawable.ic_launcher);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
         edtItemCode = (EditText) findViewById(R.id.edtItemCode);

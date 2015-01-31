@@ -19,7 +19,7 @@
         <activity
             android:name="tgit.inventory.app.MainActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/app_name"
+            android:label="@string/main_activity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
