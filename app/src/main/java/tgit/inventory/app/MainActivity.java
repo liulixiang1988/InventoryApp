@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.*;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import tgit.config.Config;
@@ -108,62 +109,34 @@ public class MainActivity extends ActionBarActivity {
         }
 
         private void initialControl(View v){
-            GridView gridview = (GridView) v.findViewById(R.id.GridView);
-            ArrayList<HashMap<String, Object>> menuList = new ArrayList<HashMap<String, Object>>();
-            for(int i = 0;i < 3;i++)
-            {
-                HashMap<String, Object> map = new HashMap<String, Object>();
-                switch (i){
-                    case 0:
-                        map.put("ItemImage", R.drawable.inv_in);
-                        map.put("ItemText", "入库");
-                        break;
-                    case 1:
-                        map.put("ItemImage", R.drawable.inv_out);
-                        map.put("ItemText", "出库");
-                        break;
-                    case 2:
-                        map.put("ItemImage", R.drawable.split);
-                        map.put("ItemText", "拆分");
-                        break;
+            Button btnInvIn = (Button) v.findViewById(R.id.btnInvIn);
+            btnInvIn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int inv_type = 0;
+                    Intent i = new Intent(getActivity(), InvInActivity.class);
+                    i.putExtra(Config.INV_TYPE, inv_type);
+                    startActivity(i);
                 }
-                menuList.add(map);
-            }
-            SimpleAdapter saItem = new SimpleAdapter(getActivity(),
-                    menuList, //数据源
-                    R.layout.dashboard_button_layout, //xml实现
-                    new String[]{"ItemImage","ItemText"}, //对应map的Key
-                    new int[]{R.id.ItemImage,R.id.ItemText});  //对应R的Id
+            });
 
-            //添加Item到网格中
-            gridview.setAdapter(saItem);
-            //添加点击事件
-            gridview.setOnItemClickListener(
-                    new AdapterView.OnItemClickListener()
-                    {
-                        public void onItemClick(AdapterView<?> parent, View arg1, int position,long id)
-                        {
-                            int inv_type;
-                            Intent i;
-                            switch (position) {
-                                case 0:
-                                    inv_type = 0;
-                                    i = new Intent(getActivity(), InvInActivity.class);
-                                    i.putExtra(Config.INV_TYPE, inv_type);
-                                    startActivity(i);
-                                    break;
-                                case 1:
-                                    i = new Intent(getActivity(), InvOutActivity.class);
-                                    startActivity(i);
-                                    break;
-                                case 2:
-                                    i = new Intent(getActivity(), SplitActivity.class);
-                                    startActivity(i);
-                                    break;
-                            }
-                        }
-                    }
-            );
+            Button btnInvOut = (Button)v.findViewById(R.id.btnInvOut);
+            btnInvOut.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(getActivity(), InvOutActivity.class);
+                    startActivity(i);
+                }
+            });
+
+            Button btnSplit = (Button) v.findViewById(R.id.btnSplit);
+            btnSplit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(getActivity(), SplitActivity.class);
+                    startActivity(i);
+                }
+            });
         }
     }
 }
