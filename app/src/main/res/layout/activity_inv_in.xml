@@ -8,6 +8,16 @@
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context="tgit.inventory.ui.InvInActivity">
 
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/inv_help_text"
+            android:id="@+id/txtInvHelper"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            style="?android:listSeparatorTextViewStyle"
+            android:textSize="16sp"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +25,7 @@
         android:textSize="25sp"
         android:hint="@string/item_code"
         android:singleLine="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/txtInvHelper"
         android:layout_centerHorizontal="true"/>
 
     <Button
@@ -69,5 +79,6 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/button_delete"
         android:textColor="@android:color/white"/>
+
 
 </RelativeLayout>

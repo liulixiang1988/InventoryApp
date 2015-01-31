@@ -16,7 +16,7 @@
         android:id="@+id/btnClear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_custom"
+        android:background="@drawable/button_delete"
         android:textColor="@android:color/white"
         android:text="清空"/>
     <EditText
