@@ -45,9 +45,7 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
         Button btnClear = (Button) findViewById(R.id.btnClear);
 
         edtItemCode = (EditText) findViewById(R.id.edtItemCode);
-        edtItemCode.setInputType(InputType.TYPE_NULL);
         edtInvCode = (EditText) findViewById(R.id.edtInvCode);
-        edtInvCode.setInputType(InputType.TYPE_NULL);
 
         txtItemCodes = (TextView) findViewById(R.id.txtItemCodes);
 
@@ -78,11 +76,6 @@ public class InvInActivity extends ActionBarActivity implements View.OnClickList
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
