@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="tgit.inventory.app.MainActivity"
+            android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/main_activity"
             android:screenOrientation="portrait" >
@@ -37,7 +37,7 @@
             android:name="tgit.inventory.ui.InvInActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_inv_in"
-            android:parentActivityName="tgit.inventory.app.MainActivity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -54,7 +54,7 @@
             android:name="tgit.inventory.ui.InvOutActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_inv_out"
-            android:parentActivityName="tgit.inventory.app.MainActivity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -64,7 +64,7 @@
             android:name="tgit.inventory.ui.SplitActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_split"
-            android:parentActivityName="tgit.inventory.app.MainActivity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -103,6 +103,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tgit.inventory.ui.InvOutDeliveryListActivity" />
+        </activity>
+        <activity
+            android:name="tgit.inventory.ui.InvInManagerActivity"
+            android:label="@string/title_activity_inv_in_manager"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tgit.inventory.app.MainActivity" />
         </activity>
     </application>
 

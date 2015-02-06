@@ -102,9 +102,7 @@ public class MainActivity extends ActionBarActivity {
             btnInvIn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int inv_type = 0;
-                    Intent i = new Intent(getActivity(), InvInActivity.class);
-                    i.putExtra(Config.INV_TYPE, inv_type);
+                    Intent i = new Intent(getActivity(), InvInManagerActivity.class);
                     startActivity(i);
                 }
             });

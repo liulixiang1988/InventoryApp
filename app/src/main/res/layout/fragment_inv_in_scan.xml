@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="tgit.inventory.ui.InvInScanFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/inv_help_text"
+        android:id="@+id/txtInvHelper"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        style="?android:listSeparatorTextViewStyle"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtItemCode"
+        android:textSize="25sp"
+        android:hint="@string/item_code"
+        android:singleLine="true"
+        android:layout_below="@+id/txtInvHelper"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/inv_in_add_item_btn"
+        android:id="@+id/btnAddItem"
+        android:textSize="25sp"
+        android:layout_below="@+id/edtItemCode"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_custom"
+        android:textColor="@android:color/white"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edtInvCode"
+        android:hint="@string/inv_code"
+        android:textSize="25sp"
+        android:singleLine="true"
+        android:layout_below="@+id/btnAddItem"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_save"
+        android:id="@+id/btnSend"
+        android:textSize="25sp"
+        android:layout_below="@+id/edtInvCode"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_custom"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="25sp"
+        android:id="@+id/txtItemCodes"
+        android:layout_below="@+id/btnSend"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_clear"
+        android:id="@+id/btnClear"
+        android:layout_below="@+id/txtItemCodes"
+        android:textSize="25sp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_delete"
+        android:textColor="@android:color/white"/>
+</RelativeLayout>
