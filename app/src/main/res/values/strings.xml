@@ -48,7 +48,7 @@
     <string name="title_activity_inv_out_item_select">产品选择</string>
     <string name="btn_choose">选择</string>
     <string name="inv_help_text">请扫描或者输入物料成品条码，然后点击添加成品条码按钮；再扫描或者输入库存编码，并点击保存</string>
-    <string name="title_activity_inv_in_manager">实务入库管理</string>
+    <string name="title_activity_inv_in_manager">实物入库管理</string>
     <string name="title_in_scan">扫码入库</string>
     <string name="title_in_select">选择入库</string>
     <string name="title_in_history">Section 3</string>
