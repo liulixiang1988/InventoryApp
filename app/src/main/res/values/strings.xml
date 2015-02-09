@@ -53,5 +53,8 @@
     <string name="title_in_select">选择入库</string>
     <string name="title_in_history">Section 3</string>
     <string name="hello_world">Hello world!</string>
+    <string name="btn_title_fresh">刷新</string>
+    <string name="txt_inv_code">库存编码</string>
+    <string name="txt_no_record">没有任何记录</string>
 
 </resources>

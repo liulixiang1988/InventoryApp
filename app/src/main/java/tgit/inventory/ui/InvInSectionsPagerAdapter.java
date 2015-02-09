@@ -28,17 +28,14 @@ public class InvInSectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return InvInScanFragment.newInstance();
             case 1:
-                return InvInScanFragment.newInstance();
-            case 2:
-                return InvInScanFragment.newInstance();
+                return InvInSelectFragment.newInstance();
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        // Show 3 total pages.
-        return 3;
+        return 2;
     }
 
     @Override
@@ -49,8 +46,6 @@ public class InvInSectionsPagerAdapter extends FragmentPagerAdapter {
                 return mContext.getString(R.string.title_in_scan).toUpperCase(l);
             case 1:
                 return mContext.getString(R.string.title_in_select).toUpperCase(l);
-            case 2:
-                return mContext.getString(R.string.title_in_history).toUpperCase(l);
         }
         return null;
     }

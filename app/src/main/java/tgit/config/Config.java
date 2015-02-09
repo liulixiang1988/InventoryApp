@@ -64,6 +64,8 @@ public class Config {
 
     public static String getPrintURL(String itemId){return "product/print/"+itemId;}
 
+    public static String getHtbUnfinished(){ return "product/htb"; }
+
     public static String getInvOutRemove(int itemId){return "inventory/deleteDelivery/"+itemId;}
 
     public static String getInvOutDeliveryDetails(String deliveryNumber){return "inventory/delivery/"+deliveryNumber;}

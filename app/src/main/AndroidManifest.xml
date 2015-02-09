@@ -34,16 +34,6 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="tgit.inventory.ui.InvInActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/title_activity_inv_in"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="tgit.inventory.app.MainActivity" />
-        </activity>
-        <activity
             android:name="tgit.inventory.ui.IPConfigActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_ipconfig"
