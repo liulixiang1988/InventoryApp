@@ -38,6 +38,7 @@ public class InvInSelectFragment extends Fragment implements View.OnClickListene
     private Button btnFresh, btnSave;
     private EditText edtInvCode;
     private ListView listView;
+    private TextView txtRecentInv;
 
     private List<Datalineinfo> mItems = new ArrayList<Datalineinfo>();
 
@@ -73,6 +74,8 @@ public class InvInSelectFragment extends Fragment implements View.OnClickListene
         listView = (ListView) view.findViewById(R.id.listView);
         listView.setEmptyView(view.findViewById(android.R.id.empty));
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+        txtRecentInv = (TextView) view.findViewById(R.id.txtRecentInv);
 
         btnFresh.setOnClickListener(this);
         btnSave.setOnClickListener(this);
@@ -136,6 +139,34 @@ public class InvInSelectFragment extends Fragment implements View.OnClickListene
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 progressDialog.dismiss();
                 UIHelper.alert(getActivity(), "查找失败", throwable.getMessage());
+            }
+        });
+
+        getRecentInv();
+    }
+
+    /**
+     * 获取最近使用的货位
+     */
+    private void getRecentInv(){
+        RestClient.get(Config.INV_DELIVERY_RECENT, null, new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    JSONArray array = response.getJSONArray("invCodes");
+                    String invs = "";
+                    for(int i=0; i < array.length(); i++){
+                        invs += array.getString(i)+"\n";
+                    }
+                    txtRecentInv.setText(invs);
+                } catch (JSONException e) {
+                    Log.e(TAG, "获取最近货位失败："+e.getMessage(), e);
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Log.e(TAG, "获取最近货位发生异常："+throwable.getMessage(), throwable);
             }
         });
     }

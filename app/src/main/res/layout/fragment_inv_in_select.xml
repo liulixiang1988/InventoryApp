@@ -10,30 +10,49 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:id="@+id/linear_layout">
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_title_fresh"
-        android:id="@+id/btnFresh"
-        android:background="@drawable/button_delete"
-        android:textColor="@android:color/white"
-        />
-    <EditText
-        android:layout_width="0dp"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_title_fresh"
+            android:id="@+id/btnFresh"
+            android:background="@drawable/button_delete"
+            android:textColor="@android:color/white"
+            />
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/edtInvCode"
+            android:singleLine="true"
+            android:hint="@string/txt_inv_code"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSave"
+            android:background="@drawable/button_custom"
+            android:textColor="@android:color/white"
+            android:text="@string/btn_save"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/edtInvCode"
-        android:singleLine="true"
-        android:hint="@string/txt_inv_code"/>
-    <Button
-        android:layout_width="wrap_content"
+        android:text="最近使用的货位"
+        style="?android:listSeparatorTextViewStyle"/>
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnSave"
-        android:background="@drawable/button_custom"
-        android:textColor="@android:color/white"
-        android:text="@string/btn_save"/>
+        android:id="@+id/txtRecentInv"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="未入库列表"
+        style="?android:listSeparatorTextViewStyle"/>
 </LinearLayout>
     <ListView
         android:layout_width="match_parent"
@@ -47,4 +66,9 @@
         android:layout_centerInParent="true"
         android:text="@string/txt_no_record"
         android:textSize="36sp" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/listView"
+        android:id="@+id/invList"/>
 </RelativeLayout>
