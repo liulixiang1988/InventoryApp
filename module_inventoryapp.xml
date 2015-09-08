@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_inventoryapp" default="compile.module.inventoryapp">
+  <dirname property="module.inventoryapp.basedir" file="${ant.file.module_inventoryapp}"/>
+  
+  <property name="module.jdk.home.inventoryapp" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.inventoryapp" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.inventoryapp" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.inventoryapp" value="-encoding UTF-8 -source 1.7 ${compiler.args}"/>
+  
+  <property name="inventoryapp.output.dir" value="${module.inventoryapp.basedir}/build/classes/production/InventoryApp"/>
+  <property name="inventoryapp.testoutput.dir" value="${module.inventoryapp.basedir}/build/classes/test/InventoryApp"/>
+  
+  <path id="inventoryapp.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="inventoryapp.module.production.classpath">
+    <path refid="${module.jdk.classpath.inventoryapp}"/>
+  </path>
+  
+  <path id="inventoryapp.runtime.production.module.classpath">
+    <pathelement location="${inventoryapp.output.dir}"/>
+  </path>
+  
+  <path id="inventoryapp.module.classpath">
+    <path refid="${module.jdk.classpath.inventoryapp}"/>
+    <pathelement location="${inventoryapp.output.dir}"/>
+  </path>
+  
+  <path id="inventoryapp.runtime.module.classpath">
+    <pathelement location="${inventoryapp.testoutput.dir}"/>
+    <pathelement location="${inventoryapp.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.inventoryapp">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.inventoryapp">
+    <patternset refid="excluded.from.module.inventoryapp"/>
+  </patternset>
+  
+  
+  <target name="compile.module.inventoryapp" depends="compile.module.inventoryapp.production,compile.module.inventoryapp.tests" description="Compile module InventoryApp"/>
+  
+  <target name="compile.module.inventoryapp.production" depends="register.custom.compilers" description="Compile module InventoryApp; production classes"/>
+  
+  <target name="compile.module.inventoryapp.tests" depends="register.custom.compilers,compile.module.inventoryapp.production" description="compile module InventoryApp; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.inventoryapp" description="cleanup module">
+    <delete dir="${inventoryapp.output.dir}"/>
+    <delete dir="${inventoryapp.testoutput.dir}"/>
+  </target>
+</project>

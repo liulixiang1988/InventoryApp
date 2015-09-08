@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_tgitinventory" default="compile.module.tgitinventory">
+  <dirname property="module.tgitinventory.basedir" file="${ant.file.module_tgitinventory}"/>
+  
+  <property name="module.jdk.home.tgitinventory" value="${jdk.home.1.8}"/>
+  <property name="module.jdk.bin.tgitinventory" value="${jdk.bin.1.8}"/>
+  <property name="module.jdk.classpath.tgitinventory" value="jdk.classpath.1.8"/>
+  
+  <property name="compiler.args.tgitinventory" value="-encoding UTF-8 -source 1.7 ${compiler.args}"/>
+  
+  <property name="tgitinventory.output.dir" value="${module.tgitinventory.basedir}/build/classes/production/TgitInventory"/>
+  <property name="tgitinventory.testoutput.dir" value="${module.tgitinventory.basedir}/build/classes/test/TgitInventory"/>
+  
+  <path id="tgitinventory.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="tgitinventory.module.production.classpath">
+    <path refid="${module.jdk.classpath.tgitinventory}"/>
+  </path>
+  
+  <path id="tgitinventory.runtime.production.module.classpath">
+    <pathelement location="${tgitinventory.output.dir}"/>
+  </path>
+  
+  <path id="tgitinventory.module.classpath">
+    <path refid="${module.jdk.classpath.tgitinventory}"/>
+    <pathelement location="${tgitinventory.output.dir}"/>
+  </path>
+  
+  <path id="tgitinventory.runtime.module.classpath">
+    <pathelement location="${tgitinventory.testoutput.dir}"/>
+    <pathelement location="${tgitinventory.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.tgitinventory">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.tgitinventory">
+    <patternset refid="excluded.from.module.tgitinventory"/>
+  </patternset>
+  
+  
+  <target name="compile.module.tgitinventory" depends="compile.module.tgitinventory.production,compile.module.tgitinventory.tests" description="Compile module TgitInventory"/>
+  
+  <target name="compile.module.tgitinventory.production" depends="register.custom.compilers" description="Compile module TgitInventory; production classes"/>
+  
+  <target name="compile.module.tgitinventory.tests" depends="register.custom.compilers,compile.module.tgitinventory.production" description="compile module TgitInventory; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.tgitinventory" description="cleanup module">
+    <delete dir="${tgitinventory.output.dir}"/>
+    <delete dir="${tgitinventory.testoutput.dir}"/>
+  </target>
+</project>
